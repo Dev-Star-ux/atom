@@ -1,0 +1,100 @@
+{
+  "_meta": { "name": "English" },
+
+  "app": {
+    "title": "Atomic Physics Lecture",
+    "subtitle": "Interactive simulations"
+  },
+
+  "nav": {
+    "contents": "CONTENTS",
+    "settings": "Settings",
+    "about": "About"
+  },
+
+  "welcome": {
+    "title": "Atomic Physics Lecture",
+    "body": "Select a topic on the left to open its interactive simulation. Use the controls to change the experiment and watch the physics respond in real time. Everything runs offline. You can change the language and font at any time in Settings."
+  },
+
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "font_family": "Font",
+    "font_size": "Font size",
+    "apply": "Apply",
+    "cancel": "Close"
+  },
+
+  "about": {
+    "text": "An offline lecture aid for atomic physics. Chapter 1, Section 1 covers the discovery and properties of the electron and the mass analysis of matter. Simulations use real physical constants. No internet connection or external service is required."
+  },
+
+  "common": {
+    "controls": "Controls",
+    "play": "Play",
+    "pause": "Pause",
+    "reset": "Reset"
+  },
+
+  "curriculum": {
+    "ch1": {
+      "title": "Ch.1  Structure of the Atom",
+      "sec1": { "title": "Sec.1  The Element of the Atom — Electron" }
+    }
+  },
+
+  "element": {
+    "neon": "Neon (Ne)",
+    "chlorine": "Chlorine (Cl)",
+    "magnesium": "Magnesium (Mg)",
+    "carbon": "Carbon (C)"
+  },
+
+  "topic": {
+    "cathode_ray": {
+      "title": "Electric Charge & the Discovery of the Electron",
+      "desc": "Thomson's cathode-ray tube. Electrons fired from the cathode pass between charged plates and a magnetic field. The beam bends toward the positive plate — proof that cathode rays carry negative charge.",
+      "voltage": "Plate voltage",
+      "bfield": "Magnetic field",
+      "beam_on": "Beam on",
+      "deflection": "Beam deflection",
+      "sign": "Charge sign",
+      "cathode": "Cathode",
+      "screen": "Screen",
+      "dir_up": "Upward (toward +)",
+      "dir_down": "Downward (toward +)",
+      "dir_none": "Straight (no field)",
+      "negative": "Negative (−)"
+    },
+
+    "millikan": {
+      "title": "Determining the Mass & Charge of the Electron",
+      "desc": "Millikan's oil-drop experiment. A charged oil drop is balanced between two plates so that the electric force cancels gravity. The measured charge is always a whole-number multiple of the elementary charge e.",
+      "voltage": "Plate voltage",
+      "new_drop": "Spray new drop",
+      "balance": "Auto-balance",
+      "radius": "Drop radius",
+      "mass": "Drop mass",
+      "measured_q": "Measured charge",
+      "n_electrons": "Charge in units of e",
+      "status": "Motion",
+      "balanced": "Balanced (floating)",
+      "falling": "Falling",
+      "rising": "Rising",
+      "n_value": "≈ {n} e   (e = {e} C)",
+      "gap_label": "plate gap d = {d}"
+    },
+
+    "mass_spec": {
+      "title": "Mass Analysis of Matter (Mass Spectrometer)",
+      "desc": "Ions are accelerated by a voltage and bent by a magnetic field. Heavier isotopes follow a wider arc, so they land at different detector positions. The peak heights reproduce the natural isotopic abundances.",
+      "sample": "Sample element",
+      "voltage": "Accelerating voltage",
+      "bfield": "Magnetic field",
+      "detected": "Detected counts",
+      "source": "Ion source",
+      "detector": "Detector"
+    }
+  }
+}
