@@ -45,7 +45,8 @@
     },
     "ch2": {
       "title": "Ch.2  Quantum Nature of the Atom",
-      "sec1": { "title": "Sec.1  Blackbody Radiation" }
+      "sec1": { "title": "Sec.1  Blackbody Radiation" },
+      "sec2": { "title": "Sec.2  The Photoelectric Effect" }
     }
   },
 
@@ -54,6 +55,15 @@
     "chlorine": "Chlorine (Cl)",
     "magnesium": "Magnesium (Mg)",
     "carbon": "Carbon (C)"
+  },
+
+  "material": {
+    "cesium": "Cesium (2.10 eV)",
+    "sodium": "Sodium (2.28 eV)",
+    "calcium": "Calcium (2.87 eV)",
+    "zinc": "Zinc (4.30 eV)",
+    "copper": "Copper (4.70 eV)",
+    "platinum": "Platinum (6.35 eV)"
   },
 
   "topic": {
@@ -219,6 +229,86 @@
       "classical_label": "classical (h→0)",
       "quantum_label": "Planck (quantum)",
       "limit_note": "→ classical catastrophe"
+    },
+
+    "pe_apparatus": {
+      "title": "Experimental Principle of the Photoelectric Effect",
+      "desc": "Monochromatic light strikes a metal cathode in a vacuum tube; ejected electrons cross to the anode and register as a photocurrent. A variable voltage accelerates or retards them. The reverse voltage that just stops the current — the stopping potential V_s — measures the maximum electron energy: e·V_s = KE_max.",
+      "frequency": "Frequency (×10¹⁴ Hz)",
+      "intensity": "Light intensity",
+      "voltage": "Collector voltage",
+      "photon_energy": "Photon energy hν",
+      "ke_max": "Max kinetic energy",
+      "stopping": "Stopping potential",
+      "current": "Photocurrent",
+      "light": "light",
+      "cathode": "cathode",
+      "anode": "anode",
+      "ammeter": "ammeter",
+      "accel": "accelerating",
+      "retard": "retarding",
+      "no_emit": "no emission",
+      "below": "hν < W : no electrons are emitted"
+    },
+
+    "wave_theory": {
+      "title": "Wave Theory of Light and the Photoelectric Effect",
+      "desc": "Classical wave theory predicts that electron energy should grow with light intensity, that any frequency should work if bright enough, and that dim light should show a delay while energy is absorbed. Every one of these disagrees with experiment, where the energy depends only on frequency, a threshold frequency exists, and emission is instant.",
+      "frequency": "Frequency (×10¹⁴ Hz)",
+      "intensity": "Light intensity",
+      "delay": "Predicted delay",
+      "delay_val": "{s} s (classical)",
+      "actual_ke": "Actual KE_max",
+      "none": "none (below threshold)",
+      "left_title": "Wave theory predicts",
+      "right_title": "Experiment shows",
+      "pred_ke": "KE ∝ intensity",
+      "real_ke": "KE ∝ frequency",
+      "claim1": "energy should rise with brightness",
+      "claim2": "energy rises with frequency only",
+      "claim3": "dim light → long delay predicted",
+      "accumulate": "energy slowly absorbed",
+      "instant": "instant ejection",
+      "no_eject": "no ejection below ν₀",
+      "threshold_note": "a threshold frequency is required"
+    },
+
+    "quantum_theory": {
+      "title": "Quantum Theory of Light and the Photoelectric Effect",
+      "desc": "Einstein: light comes in photons of energy E = hν, and one photon gives all its energy to one electron, so KE_max = hν − W. Below the threshold ν₀ = W/h no electrons escape, however bright the light. Plotting KE_max against frequency gives a straight line of slope h — exactly as measured.",
+      "frequency": "Frequency (×10¹⁴ Hz)",
+      "material": "Cathode material",
+      "photon_energy": "Photon energy hν",
+      "work": "Work function W",
+      "ke_max": "KE_max = hν − W",
+      "threshold": "Threshold ν₀",
+      "no_emit": "0 (below threshold)",
+      "below": "hν < W : no emission",
+      "xlabel": "Frequency ν (×10¹⁴ Hz)",
+      "ylabel": "KE_max (eV)",
+      "threshold_mark": "ν₀"
+    },
+
+    "applications": {
+      "title": "Applications of the Photoelectric Effect",
+      "desc": "Two devices built on the photoelectric effect. A photomultiplier tube turns a single photon into a large pulse by cascading electrons down a chain of dynodes (gain ≈ δ^N). A solar cell uses photons to create electron-hole pairs in a p-n junction, driving a current through an external load — light converted straight into electric power.",
+      "device": "Device",
+      "pmt": "Photomultiplier tube",
+      "solar": "Solar cell",
+      "dynodes": "Number of dynodes",
+      "secondary": "Secondary emission δ",
+      "gain": "Total gain δ^N",
+      "gain_val": "{g}",
+      "photocathode": "photocathode",
+      "anode": "anode",
+      "pmt_note": "one photon → one electron → an avalanche down the dynodes",
+      "intensity": "Light intensity",
+      "current": "Photocurrent",
+      "power": "Output power",
+      "p_side": "p-type",
+      "n_side": "n-type",
+      "load": "load",
+      "solar_note": "photons create electron–hole pairs that drive the load current"
     }
   }
 }

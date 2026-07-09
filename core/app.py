@@ -19,6 +19,10 @@ from simulations.spectral_density import SpectralDensitySim
 from simulations.bb_features import BBFeaturesSim
 from simulations.rayleigh_jeans import RayleighJeansSim
 from simulations.planck import PlanckSim
+from simulations.photoelectric_apparatus import PhotoApparatusSim
+from simulations.wave_theory import WaveTheorySim
+from simulations.quantum_theory import QuantumTheorySim
+from simulations.applications import ApplicationsSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -61,6 +65,16 @@ CURRICULUM = [
                     {"id": "bb_features", "title_key": "topic.bb_features.title", "sim": BBFeaturesSim},
                     {"id": "rayleigh_jeans", "title_key": "topic.rayleigh_jeans.title", "sim": RayleighJeansSim},
                     {"id": "planck", "title_key": "topic.planck.title", "sim": PlanckSim},
+                ],
+            },
+            {
+                "id": "ch2_sec2",
+                "title_key": "curriculum.ch2.sec2.title",
+                "topics": [
+                    {"id": "pe_apparatus", "title_key": "topic.pe_apparatus.title", "sim": PhotoApparatusSim},
+                    {"id": "wave_theory", "title_key": "topic.wave_theory.title", "sim": WaveTheorySim},
+                    {"id": "quantum_theory", "title_key": "topic.quantum_theory.title", "sim": QuantumTheorySim},
+                    {"id": "applications", "title_key": "topic.applications.title", "sim": ApplicationsSim},
                 ],
             },
         ],
