@@ -55,8 +55,17 @@
     },
     "ch3": {
       "title": "Ch.3  The Basics of Quantum Mechanics",
-      "sec1": { "title": "Sec.1  Matter Wave" }
+      "sec1": { "title": "Sec.1  Matter Wave" },
+      "sec2": { "title": "Sec.2  Uncertainty" },
+      "sec3": { "title": "Sec.3  Statistical Analysis of Wave Function" },
+      "sec4": { "title": "Sec.4  Schrödinger Equation" }
     }
+  },
+
+  "wpview": {
+    "wave": "Wave function ψ(x)",
+    "probability": "Probability |ψ|²",
+    "detections": "Single-particle detections"
   },
 
   "duality": {
@@ -592,6 +601,139 @@
       "theta_axis": "Angle θ (°)",
       "intensity_axis": "Intensity (rel.)",
       "note": "Bragg: nλ = d sin θ   ·   Ni spacing d ≈ {d} pm   ·   peak near 50° at V ≈ 54 V"
+    },
+
+    "wave_beam": {
+      "title": "Wave Beam",
+      "desc": "A matter wave can be drawn as a beam: a carrier wave of wavelength λ = h/p inside a Gaussian envelope that limits where the particle is likely to be found. The envelope width Δx and the spread of wave numbers Δk are linked — a narrower beam implies a wider spread of momenta.",
+      "width": "Beam width Δx",
+      "wavelength": "Carrier wavelength",
+      "spread": "Position spread Δx",
+      "k_spread": "Wave-number spread Δk",
+      "title_canvas": "Wave packet (matter-wave beam)",
+      "envelope": "probability envelope |ψ|²",
+      "propagation": "beam direction",
+      "note": "Narrower beam → larger Δk → larger Δp  (leads to Δx·Δp ≥ ħ/2)"
+    },
+
+    "uncertainty_xp": {
+      "title": "Uncertainty: Position & Momentum",
+      "desc": "Heisenberg's uncertainty principle: Δx·Δp ≥ ħ/2. A Gaussian wave packet saturates the inequality with equality. Localising a particle in space (small Δx) forces a broad momentum distribution (large Δp), and vice versa.",
+      "width": "Packet width σ (≈ Δx)",
+      "delta_x": "Δx",
+      "delta_p": "Δp",
+      "product": "Δx · Δp",
+      "limit": "Minimum (ħ/2)",
+      "x_axis": "Position x",
+      "p_axis": "Momentum p",
+      "prob_axis": "|ψ|² (rel.)",
+      "pos_title": "Position probability |ψ(x)|²",
+      "mom_title": "Momentum probability |φ(p)|²",
+      "formula": "Δx · Δp ≥ ħ/2",
+      "saturated": "Minimum uncertainty (Gaussian packet)",
+      "above": "Δx·Δp ≥ ħ/2  (satisfied)"
+    },
+
+    "uncertainty_et": {
+      "title": "Uncertainty: Time & Energy",
+      "desc": "Energy and time are linked by ΔE·Δt ≥ ħ/2. A quantum state with a short lifetime Δt has an uncertain energy — the spectral line is broadened by a natural linewidth. Short-lived excited states produce wider lines in emission spectra.",
+      "lifetime": "State lifetime τ",
+      "delta_t": "Lifetime Δt",
+      "delta_e": "Energy uncertainty ΔE",
+      "product": "ΔE · Δt",
+      "linewidth": "Natural linewidth",
+      "t_axis": "Time (fs)",
+      "e_axis": "Energy E (eV)",
+      "prob_axis": "|ψ(t)|²",
+      "intensity_axis": "Intensity (rel.)",
+      "decay_title": "State decay in time",
+      "spectrum_title": "Energy spectrum (natural linewidth)",
+      "formula": "ΔE · Δt ≥ ħ/2",
+      "note": "Shorter τ → larger ΔE → broader spectral line"
+    },
+
+    "wave_particle_prob": {
+      "title": "Wave–Particle Neutrality & Probability",
+      "desc": "Quantum systems are neither classical waves nor particles. The wave function ψ is a probability amplitude: |ψ|² is the probability density of position. Individual detections are random; many measurements on identical systems reproduce the |ψ|² distribution statistically.",
+      "view": "Display mode",
+      "width": "Packet width",
+      "rate": "Detection rate",
+      "detections": "Detections",
+      "interpretation": "Interpretation",
+      "mean_wave": "ψ — probability amplitude",
+      "mean_prob": "|ψ|² — probability density",
+      "mean_detect": "Dots build up |ψ|²",
+      "wave_label": "Wave function ψ(x) (real part)",
+      "prob_label": "Probability density P(x) = |ψ|²",
+      "detect_label": "Many single-particle hits",
+      "wave_note": "The wave is not a physical vibration — it encodes probability.",
+      "prob_note": "Area under P(x) = 1 — normalised probability.",
+      "detect_note": "Each dot is one measurement; the pattern is statistical."
+    },
+
+    "wavefunction_stats": {
+      "title": "Statistical Analysis of the Wave Function",
+      "desc": "Born's rule: the probability of finding a particle near x is |ψ(x)|². The wave function itself is not directly measurable — only the statistics of many identical measurements. Compare the theoretical |ψ|² for a particle in a box with a histogram of simulated detections.",
+      "level": "Quantum number n",
+      "total": "Detections",
+      "normalised": "∫|ψ|² dx",
+      "yes": "= 1 (normalised)",
+      "fire": "Fire 25 detections",
+      "x_axis": "Position x (nm)",
+      "psi2_axis": "|ψ|²",
+      "count_axis": "Count",
+      "theory_title": "Theoretical |ψ(x)|²",
+      "hist_title": "Histogram of position measurements",
+      "note": "More detections → histogram matches |ψ|² (Born's rule)"
+    },
+
+    "double_slit": {
+      "title": "Double-Slit Electromagnetic Interference",
+      "desc": "Light through two narrow slits produces bright and dark fringes on a screen. Waves from each slit interfere: path difference δ = d sin θ sets the phase, giving I ∝ cos²(π d y / (λ L)). This demonstrates the wave nature of electromagnetic radiation.",
+      "frequency": "Light frequency (×10¹⁴ Hz)",
+      "separation": "Slit separation d",
+      "distance": "Screen distance L",
+      "wavelength": "Wavelength λ",
+      "fringe": "Fringe spacing Δy",
+      "slits": "double slit",
+      "screen": "screen",
+      "y_axis": "Screen position y (mm)",
+      "intensity_axis": "Intensity (rel.)",
+      "formula": "I ∝ cos²(π d y / (λ L))   ·   Δy = λL/d"
+    },
+
+    "schrodinger_discovery": {
+      "title": "Discovery of the Schrödinger Equation",
+      "desc": "Schrödinger (1926) proposed that the matter-wave amplitude ψ(x,t) evolves according to iħ ∂ψ/∂t = Ĥψ. For a particle in a box, stationary states are standing waves. A superposition of two eigenstates ψ = ψ_{n₁} + ψ_{n₂} evolves in time — watch |ψ(x,t)|² oscillate as the Schrödinger equation predicts.",
+      "level1": "First level n₁",
+      "level2": "Second level n₂",
+      "energy1": "Energy E_{n₁}",
+      "energy2": "Energy E_{n₂}",
+      "time": "Time",
+      "equation": "iħ ∂ψ/∂t = Ĥψ",
+      "hint": "Superposition ψ = ψ_{n₁} + ψ_{n₂}  →  probability flows in time",
+      "x_axis": "Position x (nm)",
+      "psi_axis": "Re ψ(x,t)",
+      "prob_axis": "|ψ|²",
+      "psi_title": "Wave function ψ(x,t) — real part",
+      "prob_title": "Probability density |ψ(x,t)|²",
+      "note": "Pause / play to see time evolution — solutions of the Schrödinger equation"
+    },
+
+    "infinite_well": {
+      "title": "Particle in an Infinite Square Well",
+      "desc": "A particle trapped between infinitely high walls at x = 0 and x = a can only occupy discrete standing-wave states ψ_n(x) = √(2/a) sin(nπx/a) with energies E_n = n²E₁. The wave function vanishes at the walls; only an integer number of half-wavelengths fit in the box.",
+      "level": "Quantum number n",
+      "width": "Well width a",
+      "energy": "Energy E_n",
+      "nodes": "Interior nodes",
+      "ratio": "E_n / E₁",
+      "potential": "Infinite square well V(x)",
+      "psi_in_box": "ψ_{n}(x)  inside the well",
+      "levels": "Energy levels",
+      "x_axis": "Position x (nm)",
+      "prob_axis": "|ψ|²",
+      "formula": "E_n = n² π²ħ² / (2m a²)   ·   ψ_n = √(2/a) sin(nπx/a)"
     }
   }
 }

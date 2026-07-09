@@ -36,6 +36,14 @@ from simulations.compton import ComptonSim
 from simulations.light_duality import LightDualitySim
 from simulations.de_broglie import DeBroglieSim
 from simulations.davisson_germer import DavissonGermerSim
+from simulations.wave_beam import WaveBeamSim
+from simulations.uncertainty_xp import UncertaintyXPSim
+from simulations.uncertainty_et import UncertaintyETSim
+from simulations.wave_particle_probability import WaveParticleProbabilitySim
+from simulations.wavefunction_stats import WavefunctionStatsSim
+from simulations.double_slit import DoubleSlitEMSim
+from simulations.schrodinger_discovery import SchrodingerDiscoverySim
+from simulations.infinite_well import InfiniteWellSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -131,6 +139,32 @@ CURRICULUM = [
                     {"id": "light_duality", "title_key": "topic.light_duality.title", "sim": LightDualitySim},
                     {"id": "de_broglie", "title_key": "topic.de_broglie.title", "sim": DeBroglieSim},
                     {"id": "davisson_germer", "title_key": "topic.davisson_germer.title", "sim": DavissonGermerSim},
+                ],
+            },
+            {
+                "id": "ch3_sec2",
+                "title_key": "curriculum.ch3.sec2.title",
+                "topics": [
+                    {"id": "wave_beam", "title_key": "topic.wave_beam.title", "sim": WaveBeamSim},
+                    {"id": "uncertainty_xp", "title_key": "topic.uncertainty_xp.title", "sim": UncertaintyXPSim},
+                    {"id": "uncertainty_et", "title_key": "topic.uncertainty_et.title", "sim": UncertaintyETSim},
+                ],
+            },
+            {
+                "id": "ch3_sec3",
+                "title_key": "curriculum.ch3.sec3.title",
+                "topics": [
+                    {"id": "wave_particle_prob", "title_key": "topic.wave_particle_prob.title", "sim": WaveParticleProbabilitySim},
+                    {"id": "wavefunction_stats", "title_key": "topic.wavefunction_stats.title", "sim": WavefunctionStatsSim},
+                    {"id": "double_slit", "title_key": "topic.double_slit.title", "sim": DoubleSlitEMSim},
+                ],
+            },
+            {
+                "id": "ch3_sec4",
+                "title_key": "curriculum.ch3.sec4.title",
+                "topics": [
+                    {"id": "schrodinger_discovery", "title_key": "topic.schrodinger_discovery.title", "sim": SchrodingerDiscoverySim},
+                    {"id": "infinite_well", "title_key": "topic.infinite_well.title", "sim": InfiniteWellSim},
                 ],
             },
         ],
