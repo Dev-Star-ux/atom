@@ -42,6 +42,10 @@
       "title": "Ch.1  Structure of the Atom",
       "sec1": { "title": "Sec.1  The Element of the Atom — Electron" },
       "sec2": { "title": "Sec.2  Rutherford's Atomic Model" }
+    },
+    "ch2": {
+      "title": "Ch.2  Quantum Nature of the Atom",
+      "sec1": { "title": "Sec.1  Blackbody Radiation" }
     }
   },
 
@@ -159,6 +163,62 @@
       "formula": "tan(θ/2) = k·Z / (E · b)",
       "hist_title": "Scattering-angle distribution",
       "theory": "theory ∝ 1/sin⁴(θ/2)"
+    },
+
+    "spectral_density": {
+      "title": "Spectral Energy Density",
+      "desc": "Thermal radiation is described by a spectral energy density u(λ,T): the energy held in each small band of wavelength. This is the measured blackbody spectrum at temperature T. Move the cursor to pick a band dλ and read the fraction of the total energy it contains — the meaning of 'u dλ = energy in [λ, λ+dλ]'.",
+      "temperature": "Temperature T",
+      "cursor": "Cursor wavelength",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "u(λ,T)",
+      "peak": "Peak wavelength",
+      "peak_mark": "peak",
+      "u_here": "u at cursor (rel.)",
+      "band_energy": "Energy in band dλ"
+    },
+
+    "bb_features": {
+      "title": "Features of Blackbody Radiation",
+      "desc": "The classical regularities. Kirchhoff's law: a cavity with a small hole is the ideal blackbody (a good absorber is a good emitter). Wien's displacement law: the peak wavelength shifts as λ_max = b/T. Stefan–Boltzmann law: the total radiated power per area grows as σT⁴. Ghost curves show cooler and hotter temperatures so the peak shift is clear.",
+      "temperature": "Temperature T",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "u (normalised)",
+      "wien": "λ_max (Wien)",
+      "power": "Power σT⁴",
+      "ratio": "Power vs 1000 K",
+      "ratio_val": "{r}×",
+      "peak_mark": "λ_max = {nm} nm",
+      "colour": "colour",
+      "cavity": "cavity"
+    },
+
+    "rayleigh_jeans": {
+      "title": "The Rayleigh–Jeans Law",
+      "desc": "The classical prediction u = 8πkT/λ⁴ agrees with experiment at long wavelengths but diverges as λ → 0, implying infinite total energy — the 'ultraviolet catastrophe'. It is shown here (dashed red) against the actual Planck spectrum (blue) on the same axes.",
+      "temperature": "Temperature T",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "u(λ,T)",
+      "peak": "Planck peak",
+      "ratio": "Classical/actual at 400 nm",
+      "uv": "ultraviolet catastrophe →∞",
+      "planck_label": "Planck (experiment)",
+      "agree": "agree at long λ"
+    },
+
+    "planck": {
+      "title": "Quantum Radiation — Planck's Law",
+      "desc": "Planck assumed energy is exchanged only in quanta E = hν. That one idea gives u(λ,T) = 8πhc/λ⁵ · 1/(e^{hc/λkT} − 1), which fits experiment and removes the catastrophe. Drag the 'h scale' toward zero: as h → 0 the quantum curve collapses onto the classical Rayleigh–Jeans curve and the catastrophe returns.",
+      "temperature": "Temperature T",
+      "hscale": "h scale",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "u(λ,T)",
+      "hvalue": "Planck constant h",
+      "peak": "Peak wavelength",
+      "quantum": "Quantum at peak (hν)",
+      "classical_label": "classical (h→0)",
+      "quantum_label": "Planck (quantum)",
+      "limit_note": "→ classical catastrophe"
     }
   }
 }

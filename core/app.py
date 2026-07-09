@@ -15,6 +15,10 @@ from simulations.cross_section import CrossSectionSim
 from simulations.planetary import PlanetarySim
 from simulations.cloud_chamber import CloudChamberSim
 from simulations.rutherford import RutherfordSim
+from simulations.spectral_density import SpectralDensitySim
+from simulations.bb_features import BBFeaturesSim
+from simulations.rayleigh_jeans import RayleighJeansSim
+from simulations.planck import PlanckSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -41,6 +45,22 @@ CURRICULUM = [
                     {"id": "planetary", "title_key": "topic.planetary.title", "sim": PlanetarySim},
                     {"id": "cloud_chamber", "title_key": "topic.cloud_chamber.title", "sim": CloudChamberSim},
                     {"id": "rutherford", "title_key": "topic.rutherford.title", "sim": RutherfordSim},
+                ],
+            },
+        ],
+    },
+    {
+        "id": "ch2",
+        "title_key": "curriculum.ch2.title",
+        "sections": [
+            {
+                "id": "ch2_sec1",
+                "title_key": "curriculum.ch2.sec1.title",
+                "topics": [
+                    {"id": "spectral_density", "title_key": "topic.spectral_density.title", "sim": SpectralDensitySim},
+                    {"id": "bb_features", "title_key": "topic.bb_features.title", "sim": BBFeaturesSim},
+                    {"id": "rayleigh_jeans", "title_key": "topic.rayleigh_jeans.title", "sim": RayleighJeansSim},
+                    {"id": "planck", "title_key": "topic.planck.title", "sim": PlanckSim},
                 ],
             },
         ],
