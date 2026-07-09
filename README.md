@@ -41,7 +41,7 @@ no Python needed on the target machine.
   hand.
 - Language files live in the `lang/` folder as `<code>.json`. Only English
   (`en.json`) ships right now. To add a language, copy `en.json` to, e.g.,
-  `ko.json`, translate the values, set `"_meta": {"name": "..."}`, and it will
+  `ch.json`, translate the values, set `"_meta": {"name": "..."}`, and it will
   appear in the Settings language list automatically — no rebuild required.
 
 ## Adding more content later
