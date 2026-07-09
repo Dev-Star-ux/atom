@@ -29,7 +29,7 @@
   },
 
   "about": {
-    "text": "An offline lecture aid for atomic physics. Chapter 1, Section 1 covers the discovery and properties of the electron and the mass analysis of matter. Simulations use real physical constants. No internet connection or external service is required."
+    "text": "An offline lecture aid for atomic physics. Interactive simulations cover the structure of the atom, blackbody radiation, the photoelectric effect, and atomic spectra. All simulations use real physical constants. No internet connection or external service is required."
   },
 
   "common": {
@@ -48,8 +48,27 @@
     "ch2": {
       "title": "Ch.2  Quantum Nature of the Atom",
       "sec1": { "title": "Sec.1  Blackbody Radiation" },
-      "sec2": { "title": "Sec.2  The Photoelectric Effect" }
+      "sec2": { "title": "Sec.2  The Photoelectric Effect" },
+      "sec3": { "title": "Sec.3  Atomic Spectrum" }
     }
+  },
+
+  "source": {
+    "continuous": "Continuous (hot solid / blackbody)",
+    "hydrogen": "Hydrogen discharge (line spectrum)",
+    "helium": "Helium discharge",
+    "sodium": "Sodium vapour lamp"
+  },
+
+  "gas": {
+    "mercury": "Mercury vapour (E₀ ≈ 4.89 eV)",
+    "neon": "Neon gas (E₀ ≈ 16.6 eV)"
+  },
+
+  "series": {
+    "balmer": "Balmer series (n₁ = 2, visible)",
+    "lyman": "Lyman series (n₁ = 1, ultraviolet)",
+    "paschen": "Paschen series (n₁ = 3, infrared)"
   },
 
   "element": {
@@ -311,6 +330,55 @@
       "n_side": "n-type",
       "load": "load",
       "solar_note": "photons create electron–hole pairs that drive the load current"
+    },
+
+    "prism_spectroscope": {
+      "title": "Features of the Atomic Spectrum — Prism Spectroscope",
+      "desc": "A prism disperses light by wavelength. A hot solid or incandescent filament produces a *continuous* spectrum — all colours are present. A gas-discharge lamp emits only discrete *lines* at wavelengths fixed by the element. Switch sources and compare: continuous blackbody radiation versus the fingerprint line spectra of hydrogen, helium, and sodium.",
+      "source": "Light source",
+      "temperature": "Source temperature (continuous only)",
+      "spectrum_type": "Spectrum type",
+      "line_count": "Emission lines (visible)",
+      "continuous": "Continuous",
+      "line": "Line (discrete)",
+      "all_wavelengths": "all λ",
+      "lamp": "source",
+      "slit": "slit",
+      "prism": "prism",
+      "screen": "screen",
+      "spectrum_view": "Dispersed spectrum",
+      "xlabel": "Wavelength (nm)"
+    },
+
+    "frank_hertz": {
+      "title": "Frank–Hertz Experiment",
+      "desc": "Electrons are accelerated from a cathode through a gas-filled tube to a collector. When the electron energy reaches the first excitation energy E₀ of the gas atoms, inelastic collisions drain kinetic energy and the collector current drops. Repeating dips at E₀, 2E₀, 3E₀, … prove that atomic energy levels are quantised.",
+      "gas": "Gas fill",
+      "voltage": "Accelerating voltage",
+      "excitation": "First excitation E₀",
+      "current": "Collector current",
+      "next_dip": "Next expected dip",
+      "cathode": "cathode",
+      "grid": "grid",
+      "collector": "collector",
+      "v_label": "V = {v} V",
+      "iv_title": "Collector current vs accelerating voltage",
+      "v_axis": "Voltage V (V)",
+      "i_axis": "Current (rel.)"
+    },
+
+    "hydrogen_spectrum": {
+      "title": "Hydrogen Atomic Spectrum",
+      "desc": "Hydrogen emits (or absorbs) light only at discrete wavelengths given by the Rydberg formula 1/λ = R_H(1/n₁² − 1/n₂²). The Balmer series (n₁ = 2) lies in the visible; Lyman (n₁ = 1) is ultraviolet; Paschen (n₁ = 3) is infrared. Each line corresponds to a photon released when the electron drops between Bohr levels.",
+      "series": "Spectral series",
+      "upper_level": "Upper level n₂",
+      "wavelength": "Wavelength λ",
+      "photon": "Photon energy",
+      "transition": "Transition",
+      "levels": "Bohr energy levels",
+      "spectrum": "Emission spectrum",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "Relative intensity"
     }
   }
 }

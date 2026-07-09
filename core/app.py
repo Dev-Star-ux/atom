@@ -23,6 +23,9 @@ from simulations.photoelectric_apparatus import PhotoApparatusSim
 from simulations.wave_theory import WaveTheorySim
 from simulations.quantum_theory import QuantumTheorySim
 from simulations.applications import ApplicationsSim
+from simulations.prism_spectroscope import PrismSpectroscopeSim
+from simulations.frank_hertz import FrankHertzSim
+from simulations.hydrogen_spectrum import HydrogenSpectrumSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -75,6 +78,15 @@ CURRICULUM = [
                     {"id": "wave_theory", "title_key": "topic.wave_theory.title", "sim": WaveTheorySim},
                     {"id": "quantum_theory", "title_key": "topic.quantum_theory.title", "sim": QuantumTheorySim},
                     {"id": "applications", "title_key": "topic.applications.title", "sim": ApplicationsSim},
+                ],
+            },
+            {
+                "id": "ch2_sec3",
+                "title_key": "curriculum.ch2.sec3.title",
+                "topics": [
+                    {"id": "prism_spectroscope", "title_key": "topic.prism_spectroscope.title", "sim": PrismSpectroscopeSim},
+                    {"id": "frank_hertz", "title_key": "topic.frank_hertz.title", "sim": FrankHertzSim},
+                    {"id": "hydrogen_spectrum", "title_key": "topic.hydrogen_spectrum.title", "sim": HydrogenSpectrumSim},
                 ],
             },
         ],
