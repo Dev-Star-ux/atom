@@ -33,6 +33,9 @@ from simulations.xray_discovery import XrayDiscoverySim
 from simulations.xray_wave import XrayWaveSim
 from simulations.xray_particle import XrayParticleSim
 from simulations.compton import ComptonSim
+from simulations.light_duality import LightDualitySim
+from simulations.de_broglie import DeBroglieSim
+from simulations.davisson_germer import DavissonGermerSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -113,6 +116,21 @@ CURRICULUM = [
                     {"id": "xray_wave", "title_key": "topic.xray_wave.title", "sim": XrayWaveSim},
                     {"id": "xray_particle", "title_key": "topic.xray_particle.title", "sim": XrayParticleSim},
                     {"id": "compton", "title_key": "topic.compton.title", "sim": ComptonSim},
+                ],
+            },
+        ],
+    },
+    {
+        "id": "ch3",
+        "title_key": "curriculum.ch3.title",
+        "sections": [
+            {
+                "id": "ch3_sec1",
+                "title_key": "curriculum.ch3.sec1.title",
+                "topics": [
+                    {"id": "light_duality", "title_key": "topic.light_duality.title", "sim": LightDualitySim},
+                    {"id": "de_broglie", "title_key": "topic.de_broglie.title", "sim": DeBroglieSim},
+                    {"id": "davisson_germer", "title_key": "topic.davisson_germer.title", "sim": DavissonGermerSim},
                 ],
             },
         ],

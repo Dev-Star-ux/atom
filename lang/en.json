@@ -29,7 +29,7 @@
   },
 
   "about": {
-    "text": "An offline lecture aid for atomic physics. Interactive simulations cover the structure of the atom, blackbody radiation, the photoelectric effect, and atomic spectra. All simulations use real physical constants. No internet connection or external service is required."
+    "text": "An offline lecture aid for atomic physics. Interactive simulations cover the structure of the atom, quantum phenomena, X-rays, and the foundations of quantum mechanics. All simulations use real physical constants. No internet connection or external service is required."
   },
 
   "common": {
@@ -52,7 +52,23 @@
       "sec3": { "title": "Sec.3  Atomic Spectrum" },
       "sec4": { "title": "Sec.4  Bohr's Atomic Model" },
       "sec5": { "title": "Sec.5  X-Rays" }
+    },
+    "ch3": {
+      "title": "Ch.3  The Basics of Quantum Mechanics",
+      "sec1": { "title": "Sec.1  Matter Wave" }
     }
+  },
+
+  "duality": {
+    "wave": "Wave experiment (interference)",
+    "particle": "Particle experiment (photoelectric)"
+  },
+
+  "particle": {
+    "electron": "Electron",
+    "proton": "Proton",
+    "neutron": "Neutron",
+    "alpha": "Alpha particle"
   },
 
   "shell": {
@@ -520,6 +536,62 @@
       "theta_axis": "Scattering angle θ (°)",
       "shift_axis": "Δλ (pm)",
       "note": "Δλ is independent of λ — key evidence for photon momentum"
+    },
+
+    "light_duality": {
+      "title": "Wave–Particle Duality of Light",
+      "desc": "Light exhibits both wave and particle properties. In interference and diffraction it spreads and produces fringes like a wave; in the photoelectric effect and Compton scattering it arrives as discrete photons of energy E = hν. Neither picture alone is sufficient — this complementarity is a cornerstone of quantum mechanics.",
+      "experiment": "View as",
+      "frequency": "Light frequency (×10¹⁴ Hz)",
+      "intensity": "Intensity",
+      "behaviour": "Observed behaviour",
+      "evidence": "Key evidence",
+      "wave_behaviour": "Interference fringes",
+      "wave_evidence": "Diffraction & interference",
+      "particle_behaviour": "Discrete photons",
+      "particle_evidence": "Photoelectric effect",
+      "wave_title": "Double-slit interference (wave nature)",
+      "particle_title": "Photoelectric effect (particle nature)",
+      "slits": "double slit",
+      "screen": "screen",
+      "metal": "metal",
+      "wave_note": "Bright and dark fringes arise from superposition — light behaves as a wave.",
+      "particle_note": "Each photon ejects at most one electron. Energy depends on frequency, not intensity.",
+      "complement": "Both descriptions are needed — wave–particle duality (complementarity)"
+    },
+
+    "de_broglie": {
+      "title": "de Broglie Waves",
+      "desc": "de Broglie (1924): every moving particle has an associated matter wave λ = h/p = h/(mv). If light can be a particle, matter can be a wave. The wavelength is tiny for macroscopic objects but comparable to atomic spacings for electrons.",
+      "particle": "Particle",
+      "velocity": "Speed",
+      "momentum": "Momentum p",
+      "wavelength": "de Broglie wavelength λ",
+      "compare": "Scale",
+      "tiny": "≪ atomic size (classical)",
+      "atomic": "≈ atomic / crystal spacing",
+      "macro": "Macroscopic (unobservable λ)",
+      "velocity_label": "v",
+      "formula": "λ = h / p",
+      "formula_note": "p = mv\n\nElectron at a few ×10⁶ m/s:\nλ ~ 0.1–1 nm\n→ atomic dimensions",
+      "one_wavelength": "≈ one wavelength",
+      "note": "The wave is not a physical vibration — it describes quantum probability"
+    },
+
+    "davisson_germer": {
+      "title": "Davisson–Germer Experiment",
+      "desc": "Davisson and Germer (1927) scattered electrons from a nickel crystal and found intensity peaks at specific angles — electron diffraction. The peak angles match the Bragg condition using the de Broglie wavelength λ = h/√(2meV), confirming that electrons are matter waves.",
+      "voltage": "Accelerating voltage V",
+      "angle": "Detector angle θ",
+      "wavelength": "Electron λ (de Broglie)",
+      "peak_angle": "1st-order peak θ",
+      "intensity": "Detected intensity",
+      "gun": "electron gun",
+      "crystal": "Ni crystal",
+      "detector": "detector",
+      "theta_axis": "Angle θ (°)",
+      "intensity_axis": "Intensity (rel.)",
+      "note": "Bragg: nλ = d sin θ   ·   Ni spacing d ≈ {d} pm   ·   peak near 50° at V ≈ 54 V"
     }
   }
 }
