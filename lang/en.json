@@ -127,18 +127,38 @@
       "scale_note": "Not to scale: a real nucleus is ~10⁴–10⁵ times smaller than the atom."
     },
 
-    "rutherford": {
-      "title": "The Rutherford Scattering Formula",
-      "desc": "Alpha particles are repelled by a heavy nucleus along hyperbolic paths. A small impact parameter gives a large deflection, so a few alphas bounce almost straight back — the clue to the tiny dense nucleus. The angular histogram builds up the Rutherford distribution, proportional to 1 / sin⁴(θ/2).",
+    "cloud_chamber": {
+      "title": "Alpha-Particle Tracks in a Cloud Chamber",
+      "desc": "The Geiger–Marsden gold-foil experiment, seen through the tracks the alpha particles leave — as in a Wilson cloud (mist) chamber. Almost all pass nearly straight through, showing the atom is mostly empty space, while a rare few deflect sharply or bounce backward, revealing a tiny, dense, positive nucleus. Turn on 'Keep tracks' to let the pattern build up.",
       "energy": "Alpha energy",
       "zcharge": "Nuclear charge Z",
-      "spread": "Beam width (max b)",
+      "persist": "Keep tracks (cloud chamber)",
+      "fired": "Alphas fired",
+      "through": "Straight through (θ<12°)",
+      "wide": "Deflected (12–90°)",
+      "backscatter": "Bounced back (θ>90°)",
+      "source": "α source",
+      "foil": "Gold foil",
+      "legend_through": "passes through → mostly empty",
+      "legend_wide": "deflected by the nucleus",
+      "legend_back": "bounced back → dense nucleus"
+    },
+
+    "rutherford": {
+      "title": "The Rutherford Scattering Formula",
+      "desc": "The quantitative law behind the experiment. In SINGLE mode, set the impact parameter b and watch one alpha's hyperbolic path; the measured deflection angle is compared live with the formula tan(θ/2) = kZ/(E·b). In BEAM mode, many alphas rain onto the nucleus and the detector histogram builds up the Rutherford distribution, ∝ 1/sin⁴(θ/2), overlaid as a smooth curve.",
+      "energy": "Alpha energy  (E)",
+      "zcharge": "Nuclear charge Z",
+      "impact": "Impact parameter b",
+      "beam_mode": "Beam mode (many alphas)",
+      "theta_measured": "θ measured",
+      "theta_formula": "θ from formula",
       "fired": "Alphas fired",
       "backscatter": "Back-scattered (θ>90°)",
-      "back_pct": "Back-scatter fraction",
-      "beam": "α beam",
-      "nucleus": "Nucleus",
-      "hist_title": "Scattering-angle distribution"
+      "beam": "α",
+      "formula": "tan(θ/2) = k·Z / (E · b)",
+      "hist_title": "Scattering-angle distribution",
+      "theory": "theory ∝ 1/sin⁴(θ/2)"
     }
   }
 }

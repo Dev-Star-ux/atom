@@ -138,6 +138,13 @@ class Simulation(ttk.Frame):
         )
 
     # helpers for subclasses ----------------------------------------------
+    def cwh(self):
+        """Canvas width/height, guarded against the 1x1 size reported before
+        the widget has been laid out."""
+        w = self.canvas.winfo_width()
+        h = self.canvas.winfo_height()
+        return (760 if w < 50 else w), (460 if h < 50 else h)
+
     def add_slider(self, parent, label_text, from_, to, value, command=None, fmt="{:.0f}"):
         """Add a labelled slider that shows its live value. Returns (var, value_label)."""
         row = ttk.Frame(parent, style="Panel.TFrame")

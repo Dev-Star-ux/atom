@@ -13,6 +13,7 @@ from simulations.millikan import MillikanSim
 from simulations.mass_spec import MassSpecSim
 from simulations.cross_section import CrossSectionSim
 from simulations.planetary import PlanetarySim
+from simulations.cloud_chamber import CloudChamberSim
 from simulations.rutherford import RutherfordSim
 
 # --- curriculum registry -------------------------------------------------
@@ -38,6 +39,7 @@ CURRICULUM = [
                 "topics": [
                     {"id": "cross_section", "title_key": "topic.cross_section.title", "sim": CrossSectionSim},
                     {"id": "planetary", "title_key": "topic.planetary.title", "sim": PlanetarySim},
+                    {"id": "cloud_chamber", "title_key": "topic.cloud_chamber.title", "sim": CloudChamberSim},
                     {"id": "rutherford", "title_key": "topic.rutherford.title", "sim": RutherfordSim},
                 ],
             },

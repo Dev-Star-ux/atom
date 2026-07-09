@@ -35,6 +35,7 @@ class CrossSectionSim(Simulation):
         self.n_transmitted = 0
         self.n_total = 0
         self._need_targets = True
+        self._last_w = None
         super().__init__(master, app)
 
     # controls -------------------------------------------------------------
@@ -79,8 +80,7 @@ class CrossSectionSim(Simulation):
 
     # geometry -------------------------------------------------------------
     def _slab(self):
-        w = self.canvas.winfo_width() or 760
-        h = self.canvas.winfo_height() or 460
+        w, h = self.cwh()
         return w, h, w * 0.22, w * 0.92   # left edge, right edge of slab
 
     def _make_targets(self):
@@ -94,12 +94,13 @@ class CrossSectionSim(Simulation):
                 self.radius,
             ))
         self._need_targets = False
+        self._last_w = w
         self._reset_stats()
 
     # physics --------------------------------------------------------------
     def tick(self, dt):
         w, h, x0, x1 = self._slab()
-        if self._need_targets:
+        if self._need_targets or self._last_w != w:
             self._make_targets()
 
         if dt > 0:

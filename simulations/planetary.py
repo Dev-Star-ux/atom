@@ -139,13 +139,13 @@ class PlanetarySim(Simulation):
             ex = cx + e["r"] * math.cos(e["angle"])
             ey = cy + ry * math.sin(e["angle"])
             e["trail"].append((ex, ey))
-            if len(e["trail"]) > 26:
+            if len(e["trail"]) > 16:
                 e["trail"].pop(0)
-            for i in range(1, len(e["trail"])):
-                x0, y0 = e["trail"][i - 1]
-                x1, y1 = e["trail"][i]
-                shade = int(60 + 160 * i / len(e["trail"]))
-                c.create_line(x0, y0, x1, y1, fill=f"#{shade:02x}bdf8")
+            # one comet-tail polyline instead of many shaded chords
+            # (plain segments; smooth splines overshoot with few, spread points)
+            if len(e["trail"]) >= 4:
+                flat = [coord for pt in e["trail"] for coord in pt]
+                c.create_line(*flat, fill="#2a6f8f", width=2)
             c.create_oval(ex - 6, ey - 6, ex + 6, ey + 6, fill="#38bdf8", outline="#7dd3fc")
             c.create_text(ex, ey, text="−", fill="#0b1220", font=self.font("small"))
 
