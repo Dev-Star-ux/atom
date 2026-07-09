@@ -24,6 +24,8 @@
     "language": "Language",
     "font_family": "Font",
     "font_size": "Font size",
+    "font_folder": "Custom fonts folder",
+    "font_hint": "Drop .ttf / .otf files here, then reopen Settings.",
     "apply": "Apply",
     "cancel": "Close"
   },

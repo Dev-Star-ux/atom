@@ -1,0 +1,12 @@
+Custom fonts folder
+====================
+
+Place .ttf, .otf, or .ttc font files in this folder.
+Restart the program (or open Settings) — the font will appear in
+Settings → Font.
+
+Examples:
+  NotoSans-Regular.ttf
+  LiberationSans-Regular.ttf
+
+No internet connection is required. Fonts are loaded locally only.

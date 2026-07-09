@@ -40,3 +40,19 @@ def lang_dir() -> str:
 
 def config_path() -> str:
     return os.path.join(base_dir(), "config.json")
+
+
+def fonts_dir() -> str:
+    """Custom fonts folder. Prefer an external, editable copy next to the .exe."""
+    external = os.path.join(base_dir(), "fonts")
+    if os.path.isdir(external):
+        return external
+    bundled = os.path.join(resource_dir(), "fonts")
+    if os.path.isdir(bundled):
+        return bundled
+    # ensure the folder exists when running from source
+    try:
+        os.makedirs(external, exist_ok=True)
+    except OSError:
+        pass
+    return external

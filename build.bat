@@ -18,12 +18,14 @@ python -m PyInstaller ^
 
 echo [3/3] Copying editable resources next to the .exe...
 if not exist "dist\lang" mkdir "dist\lang"
+if not exist "dist\fonts" mkdir "dist\fonts"
 copy /Y "lang\en.json" "dist\lang\" >nul
 copy /Y "config.json"  "dist\"      >nul
+xcopy /E /I /Y "fonts\*" "dist\fonts\" >nul 2>&1
 
 echo.
 echo Done.  Your program is at:  dist\AtomicPhysicsLecture.exe
-echo (The dist\lang folder and dist\config.json can be edited any time.)
+echo (The dist\lang, dist\fonts folders and dist\config.json can be edited any time.)
 goto :eof
 
 :error

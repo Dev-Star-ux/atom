@@ -8,6 +8,7 @@ from tkinter import font, ttk
 
 from core.config import Config
 from core.i18n import I18n
+from core.font_manager import load_custom_fonts, available_families, fonts_folder
 from simulations.cathode_ray import CathodeRaySim
 from simulations.millikan import MillikanSim
 from simulations.mass_spec import MassSpecSim
@@ -202,6 +203,7 @@ class LectureApp:
         self.colors = COLORS
 
         self.root = tk.Tk()
+        load_custom_fonts(self.root)
         self.root.title(self.i18n.t("app.title"))
         self.root.geometry("1180x740")
         self.root.minsize(980, 640)
@@ -514,20 +516,33 @@ class LectureApp:
         # font family
         ttk.Label(wrap, text=self.i18n.t("settings.font_family"), style="Panel.TLabel").grid(
             row=2, column=0, sticky="w", pady=6, padx=(0, 12))
-        families = sorted(set(font.families()))
-        fam_var = tk.StringVar(value=self.config.get("font_family"))
+        load_custom_fonts(self.root)
+        families = available_families(self.root)
+        current = self.config.get("font_family")
+        if current not in families:
+            families = [current] + families
+        fam_var = tk.StringVar(value=current)
         fam_combo = ttk.Combobox(wrap, values=families, textvariable=fam_var, width=22)
         fam_combo.grid(row=2, column=1, sticky="ew", pady=6)
 
+        ttk.Label(wrap, text=self.i18n.t("settings.font_folder"), style="Panel.TLabel").grid(
+            row=3, column=0, sticky="nw", pady=6, padx=(0, 12))
+        folder_lbl = ttk.Label(wrap, text=fonts_folder(), style="Panel.TLabel",
+                               foreground=self.colors["muted"], wraplength=260, justify="left")
+        folder_lbl.grid(row=3, column=1, sticky="w", pady=6)
+        ttk.Label(wrap, text=self.i18n.t("settings.font_hint"), style="Panel.TLabel",
+                  foreground=self.colors["accent2"], wraplength=260, justify="left").grid(
+            row=4, column=1, sticky="w", pady=(0, 4))
+
         # font size
         ttk.Label(wrap, text=self.i18n.t("settings.font_size"), style="Panel.TLabel").grid(
-            row=3, column=0, sticky="w", pady=6, padx=(0, 12))
+            row=5, column=0, sticky="w", pady=6, padx=(0, 12))
         size_var = tk.IntVar(value=int(self.config.get("font_size")))
         ttk.Spinbox(wrap, from_=8, to=22, textvariable=size_var, width=8).grid(
-            row=3, column=1, sticky="w", pady=6)
+            row=5, column=1, sticky="w", pady=6)
 
         btns = ttk.Frame(wrap, style="Panel.TFrame")
-        btns.grid(row=4, column=0, columnspan=2, sticky="e", pady=(16, 0))
+        btns.grid(row=6, column=0, columnspan=2, sticky="e", pady=(16, 0))
 
         def apply_and_close():
             # language: map chosen display name back to code
