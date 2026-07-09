@@ -1,13 +1,18 @@
-"""Shared physics for atomic-spectrum topics (Chapter 2, Section 3).
+"""Shared physics for atomic-spectrum and Bohr-model topics (Ch.2 Sec.3–4).
 
 All wavelengths are in metres unless noted. Energies in eV.
 """
 import math
 
 H = 6.62607015e-34     # Planck constant (J s)
+H_BAR = H / (2 * math.pi)
 C = 2.99792458e8       # speed of light (m/s)
 E_CHARGE = 1.602176634e-19
+M_E = 9.1093837015e-31
+EPS0 = 8.8541878128e-12
 R_H = 1.0973731568160e7   # Rydberg constant for hydrogen (m^-1)
+A0 = 4 * math.pi * EPS0 * H_BAR ** 2 / (M_E * E_CHARGE ** 2)   # Bohr radius (m)
+E_RYDBERG = 13.605693122994   # ground-state binding energy (eV)
 
 # First excitation energies for Frank–Hertz gases (eV)
 GASES = {
@@ -66,7 +71,33 @@ def hydrogen_series(n1, n_max=7):
 
 def energy_level_eV(n):
     """Bohr energy level En = -13.6 / n² eV."""
-    return -13.6 / (n * n)
+    return -E_RYDBERG / (n * n)
+
+
+def bohr_radius(n):
+    """Bohr orbit radius r_n = n² a₀ (m)."""
+    return n * n * A0
+
+
+def bohr_orbital_speed(n):
+    """Electron speed on orbit n (m/s): v = α c / n (Kepler/Bohr)."""
+    alpha = E_CHARGE ** 2 / (4 * math.pi * EPS0 * H_BAR * C)
+    return alpha * C / n
+
+
+def bohr_angular_momentum(n):
+    """Orbital angular momentum L = n ħ (J·s)."""
+    return n * H_BAR
+
+
+def orbit_radius_px(n, scale=18.0):
+    """Visual orbit radius in pixels (scales as n²)."""
+    return scale * n * n
+
+
+def orbit_angular_speed(n, speed_factor=1.0):
+    """Angular speed (rad/s) for animation; ω ∝ 1/n³ in Bohr model."""
+    return speed_factor * 3.5 / (n ** 2.5)
 
 
 def transition_energy_eV(n1, n2):

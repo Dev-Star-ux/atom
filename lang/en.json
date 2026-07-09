@@ -49,8 +49,15 @@
       "title": "Ch.2  Quantum Nature of the Atom",
       "sec1": { "title": "Sec.1  Blackbody Radiation" },
       "sec2": { "title": "Sec.2  The Photoelectric Effect" },
-      "sec3": { "title": "Sec.3  Atomic Spectrum" }
+      "sec3": { "title": "Sec.3  Atomic Spectrum" },
+      "sec4": { "title": "Sec.4  Bohr's Atomic Model" }
     }
+  },
+
+  "problem": {
+    "radiation": "1. Radiative collapse",
+    "spectrum": "2. Wrong spectrum (continuous vs lines)",
+    "stability": "3. No preferred orbit radius"
   },
 
   "source": {
@@ -379,6 +386,62 @@
       "spectrum": "Emission spectrum",
       "xlabel": "Wavelength λ (nm)",
       "ylabel": "Relative intensity"
+    },
+
+    "planetary_flaws": {
+      "title": "Disadvantages of the Planetary Model",
+      "desc": "Rutherford's nuclear atom places electrons in classical orbits, but classical physics predicts an atom that cannot exist: electrons should radiate and spiral inward, emit continuous spectra instead of sharp lines, and have no reason to choose one orbit radius over another. Step through each failure — the motivation for Bohr's quantised orbits.",
+      "problem": "Select problem",
+      "energy": "Orbital energy",
+      "orbit_radius": "Orbit radius",
+      "verdict": "Classical verdict",
+      "energy_loss": "Radiated energy",
+      "rad_note": "A charge in circular motion accelerates continuously. Larmor's formula says it must radiate electromagnetic energy and lose orbital energy — spiralling into the nucleus in about 10⁻¹¹ s.",
+      "collapsed": "electron collapsed",
+      "verdict_rad": "Atom unstable (radiates)",
+      "classical_pred": "Classical prediction: continuous",
+      "observed": "Observed: discrete lines",
+      "spec_note": "Classical orbits of any radius should produce all wavelengths. Hydrogen instead emits only the Balmer lines (and others) at fixed wavelengths — evidence of quantised energy levels.",
+      "any_radius": "any r allowed",
+      "verdict_spec": "Lines unexplained",
+      "stab_note": "Nothing in classical mechanics picks a unique orbit radius. Electrons could orbit at any distance with any energy — yet atoms have definite sizes and discrete spectra.",
+      "continuous_energies": "continuous E",
+      "no_selection": "no preferred r",
+      "verdict_stab": "No stable radius"
+    },
+
+    "bohr_model": {
+      "title": "Bohr's Atomic Model",
+      "desc": "Bohr (1913) proposed that electrons occupy only certain stationary orbits with quantised angular momentum L = nħ. On these orbits the electron does not radiate. Light is emitted only when the electron jumps between orbits. This gives discrete radii r_n = n²a₀ and energies E_n = −13.6 eV/n².",
+      "quantum_n": "Principal quantum number n",
+      "show_all": "Show all allowed orbits",
+      "radius": "Orbit radius r_n",
+      "energy": "Energy level E_n",
+      "momentum": "Angular momentum",
+      "speed": "Orbital speed",
+      "post1": "① Electrons move in allowed circular orbits with L = nħ.",
+      "post2": "② On a stationary orbit the electron does not radiate.",
+      "post3": "③ Photons are emitted or absorbed only in discrete jumps between orbits.",
+      "formulas": "r_n = n² a₀     ·     E_n = −13.6 eV / n²     ·     ΔE = hν"
+    },
+
+    "bohr_hydrogen": {
+      "title": "Hydrogen Atom — Electron Orbit & Spectrum Series",
+      "desc": "In the hydrogen atom the electron moves on quantised Bohr orbits (left). Each orbit n has radius r_n = n²a₀ and energy E_n = −13.6/n² eV. When the electron drops from orbit n₂ to n₁ it emits a photon of wavelength λ from the Rydberg formula — one line of the Balmer, Lyman, or Paschen series (below). Change the orbit and series to see how electron motion and the line spectrum are linked.",
+      "series": "Spectral series",
+      "orbit_n": "Electron orbit n",
+      "radius": "Orbit radius r_n",
+      "speed": "Orbital speed",
+      "wavelength": "Emission wavelength λ",
+      "photon": "Photon energy",
+      "transition": "Transition",
+      "orbit_label": "Electron orbit (Bohr model)",
+      "levels": "Energy levels",
+      "photon_emit": "hν",
+      "spectrum": "{series} — emission lines",
+      "xlabel": "Wavelength λ (nm)",
+      "ylabel": "Line",
+      "formula": "1/λ = R_H (1/n₁² − 1/n₂²)   ·   each line = one orbit-to-orbit transition"
     }
   }
 }

@@ -26,6 +26,9 @@ from simulations.applications import ApplicationsSim
 from simulations.prism_spectroscope import PrismSpectroscopeSim
 from simulations.frank_hertz import FrankHertzSim
 from simulations.hydrogen_spectrum import HydrogenSpectrumSim
+from simulations.planetary_disadvantages import PlanetaryDisadvantagesSim
+from simulations.bohr_model import BohrModelSim
+from simulations.bohr_hydrogen import BohrHydrogenSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -87,6 +90,15 @@ CURRICULUM = [
                     {"id": "prism_spectroscope", "title_key": "topic.prism_spectroscope.title", "sim": PrismSpectroscopeSim},
                     {"id": "frank_hertz", "title_key": "topic.frank_hertz.title", "sim": FrankHertzSim},
                     {"id": "hydrogen_spectrum", "title_key": "topic.hydrogen_spectrum.title", "sim": HydrogenSpectrumSim},
+                ],
+            },
+            {
+                "id": "ch2_sec4",
+                "title_key": "curriculum.ch2.sec4.title",
+                "topics": [
+                    {"id": "planetary_flaws", "title_key": "topic.planetary_flaws.title", "sim": PlanetaryDisadvantagesSim},
+                    {"id": "bohr_model", "title_key": "topic.bohr_model.title", "sim": BohrModelSim},
+                    {"id": "bohr_hydrogen", "title_key": "topic.bohr_hydrogen.title", "sim": BohrHydrogenSim},
                 ],
             },
         ],
