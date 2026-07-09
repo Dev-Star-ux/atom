@@ -114,9 +114,8 @@ class QuantumTheorySim(Simulation):
         self.r_thresh.set(f"{photo.threshold_f14(self._work()):.1f} ×10¹⁴ Hz")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, ab, mx = self._geom()
         col = self.colors
         pcolor = photo.photon_color(self.freq)

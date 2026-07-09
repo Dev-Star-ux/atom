@@ -115,9 +115,8 @@ class MillikanSim(Simulation):
             self.r_status.set(self.t("topic.millikan.rising"))
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w = self.canvas.winfo_width() or 760
         h = self.canvas.winfo_height() or 460
         col = self.colors

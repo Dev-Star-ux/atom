@@ -14,7 +14,9 @@
 
   "welcome": {
     "title": "Atomic Physics Lecture",
-    "body": "Select a topic on the left to open its interactive simulation. Use the controls to change the experiment and watch the physics respond in real time. Everything runs offline. You can change the language and font at any time in Settings."
+    "body": "Interactive, offline simulations for teaching atomic physics. Use the controls to change each experiment and watch the physics respond in real time.",
+    "topics": "{n} interactive topics",
+    "hint": "Select a topic from the left to begin."
   },
 
   "settings": {

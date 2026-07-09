@@ -188,9 +188,8 @@ class RutherfordSim(Simulation):
             self.r_back.set("-")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, nx, ny = self._nucleus()
         col = self.colors
 

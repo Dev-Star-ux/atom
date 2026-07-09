@@ -158,9 +158,8 @@ class CrossSectionSim(Simulation):
             self.r_trans.set("-")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, x0, x1 = self._slab()
         col = self.colors
 

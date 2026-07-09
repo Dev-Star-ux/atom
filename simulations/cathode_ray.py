@@ -116,9 +116,8 @@ class CathodeRaySim(Simulation):
         self.r_charge.set(self.t("topic.cathode_ray.negative"))
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, cy, gun_x, px1, px2, screen_x = self._geom()
         col = self.colors
 

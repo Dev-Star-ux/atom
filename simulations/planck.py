@@ -42,9 +42,8 @@ class PlanckSim(SpectrumSim):
         self.t_var.set(self.temp)
         self.h_var.set(self.hscale)
 
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         lams = self.lam_grid()
         xs = self.nm(lams)
         # fixed reference scale (true h) so a growing curve visibly clips

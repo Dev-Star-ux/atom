@@ -29,9 +29,8 @@ class RayleighJeansSim(SpectrumSim):
         self.temp = 4000.0
         self.t_var.set(self.temp)
 
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         lams = self.lam_grid()
         xs = self.nm(lams)
         scale = self.planck_peak_value(self.temp) or 1.0

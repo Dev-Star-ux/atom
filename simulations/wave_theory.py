@@ -57,9 +57,8 @@ class WaveTheorySim(Simulation):
         ke = max(0.0, photo.photon_energy_eV(self.freq) - WORK)
         self.r_actual.set(f"{ke:.2f} eV" if ke > 0 else self.t("topic.wave_theory.none"))
 
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h = self.cwh()
         col = self.colors
         midx = w / 2

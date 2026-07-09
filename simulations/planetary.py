@@ -116,9 +116,8 @@ class PlanetarySim(Simulation):
             self.r_status.set(self.t("topic.planetary.stable"))
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w = self.canvas.winfo_width() or 760
         h = self.canvas.winfo_height() or 460
         cx, cy = w / 2, h / 2

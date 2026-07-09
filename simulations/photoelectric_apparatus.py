@@ -127,9 +127,8 @@ class PhotoApparatusSim(Simulation):
         self.r_current.set(f"{self.current * 0.1:.2f} µA")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, cy, cx, ax = self._geom()
         gap = ax - cx
         col = self.colors

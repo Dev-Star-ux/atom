@@ -40,9 +40,8 @@ class SpectralDensitySim(SpectrumSim):
         self.t_var.set(self.temp)
         self.c_var.set(self.cursor)
 
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         lams = self.lam_grid()
         us = [bb.planck_u(l, self.temp) for l in lams]
         ymax = (max(us) or 1.0) * 1.15

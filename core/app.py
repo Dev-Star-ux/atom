@@ -82,16 +82,26 @@ CURRICULUM = [
 ]
 
 COLORS = {
-    "bg": "#0f172a",
-    "sidebar": "#111c33",
-    "content": "#0f172a",
-    "panel": "#1e293b",
-    "canvas": "#0b1220",
-    "canvas_text": "#94a3b8",
-    "accent": "#3b82f6",
-    "text": "#e2e8f0",
-    "muted": "#94a3b8",
-    "border": "#233047",
+    "bg": "#080d1a",             # window backdrop
+    "sidebar": "#0e1730",        # sidebar base
+    "sidebar_top": "#111d38",    # sidebar gradient top
+    "sidebar_bot": "#0a1122",    # sidebar gradient bottom
+    "content": "#0a1020",
+    "panel": "#131e38",          # control card
+    "panel2": "#1a2748",         # nested control / button
+    "canvas": "#0a1122",         # gradient bottom (canvas)
+    "canvas_top": "#12203c",     # gradient top (canvas)
+    "canvas_text": "#8ba0c4",
+    "accent": "#4f8cff",         # primary electric blue
+    "accent_hover": "#6ea0ff",
+    "accent2": "#22d3ee",        # cyan
+    "text": "#eef3fc",
+    "muted": "#8092b4",
+    "border": "#22304f",
+    "good": "#34d399",
+    "warn": "#fbbf24",
+    "bad": "#f87171",
+    "value": "#7dd3fc",
 }
 
 
@@ -123,9 +133,12 @@ class LectureApp:
         self.fonts = {
             "base": font.Font(family=fam, size=size),
             "small": font.Font(family=fam, size=max(8, size - 2)),
-            "heading": font.Font(family=fam, size=size + 6, weight="bold"),
-            "title": font.Font(family=fam, size=size + 12, weight="bold"),
-            "panel_title": font.Font(family=fam, size=size + 1, weight="bold"),
+            "tiny": font.Font(family=fam, size=max(7, size - 3)),
+            "bold": font.Font(family=fam, size=size, weight="bold"),
+            "heading": font.Font(family=fam, size=size + 7, weight="bold"),
+            "title": font.Font(family=fam, size=size + 15, weight="bold"),
+            "panel_title": font.Font(family=fam, size=max(8, size - 1), weight="bold"),
+            "chip": font.Font(family=fam, size=max(7, size - 3), weight="bold"),
         }
         # make ttk's built-in named fonts follow the config too
         for named in ("TkDefaultFont", "TkTextFont", "TkMenuFont", "TkHeadingFont"):
@@ -139,9 +152,12 @@ class LectureApp:
         size = int(self.config.get("font_size"))
         self.fonts["base"].configure(family=fam, size=size)
         self.fonts["small"].configure(family=fam, size=max(8, size - 2))
-        self.fonts["heading"].configure(family=fam, size=size + 6)
-        self.fonts["title"].configure(family=fam, size=size + 12)
-        self.fonts["panel_title"].configure(family=fam, size=size + 1)
+        self.fonts["tiny"].configure(family=fam, size=max(7, size - 3))
+        self.fonts["bold"].configure(family=fam, size=size)
+        self.fonts["heading"].configure(family=fam, size=size + 7)
+        self.fonts["title"].configure(family=fam, size=size + 15)
+        self.fonts["panel_title"].configure(family=fam, size=max(8, size - 1))
+        self.fonts["chip"].configure(family=fam, size=max(7, size - 3))
         for named in ("TkDefaultFont", "TkTextFont", "TkMenuFont", "TkHeadingFont"):
             try:
                 font.nametofont(named).configure(family=fam, size=size)
@@ -160,37 +176,83 @@ class LectureApp:
     def _configure_style(self):
         c = self.colors
         s = self.style
+
+        # frames / surfaces
         s.configure("Content.TFrame", background=c["content"])
         s.configure("Sidebar.TFrame", background=c["sidebar"])
         s.configure("Panel.TFrame", background=c["panel"])
+        s.configure("Panel2.TFrame", background=c["panel2"])
 
+        # labels
         s.configure("TLabel", background=c["content"], foreground=c["text"], font=self.fonts["base"])
         s.configure("Muted.TLabel", background=c["content"], foreground=c["muted"], font=self.fonts["base"])
         s.configure("Heading.TLabel", background=c["content"], foreground=c["text"], font=self.fonts["heading"])
         s.configure("Title.TLabel", background=c["content"], foreground=c["text"], font=self.fonts["title"])
         s.configure("Sidebar.TLabel", background=c["sidebar"], foreground=c["muted"], font=self.fonts["small"])
-        s.configure("SidebarTitle.TLabel", background=c["sidebar"], foreground=c["text"], font=self.fonts["panel_title"])
+        s.configure("SidebarTitle.TLabel", background=c["sidebar"], foreground=c["text"], font=self.fonts["heading"])
+        s.configure("Kicker.TLabel", background=c["sidebar"], foreground=c["accent2"], font=self.fonts["chip"])
+        s.configure("SectionHead.TLabel", background=c["sidebar"], foreground=c["muted"], font=self.fonts["chip"])
 
         s.configure("Panel.TLabel", background=c["panel"], foreground=c["text"], font=self.fonts["base"])
-        s.configure("PanelTitle.TLabel", background=c["panel"], foreground=c["text"], font=self.fonts["panel_title"])
-        s.configure("Value.TLabel", background=c["panel"], foreground=c["accent"], font=self.fonts["base"])
-        s.configure("Readout.TLabel", background=c["panel"], foreground="#38bdf8", font=self.fonts["base"])
+        s.configure("PanelTitle.TLabel", background=c["panel"], foreground=c["accent2"], font=self.fonts["panel_title"])
+        s.configure("Value.TLabel", background=c["panel"], foreground=c["accent"], font=self.fonts["bold"])
+        s.configure("Readout.TLabel", background=c["panel"], foreground=c["value"], font=self.fonts["bold"])
         s.configure("Panel.TCheckbutton", background=c["panel"], foreground=c["text"], font=self.fonts["base"])
-        s.map("Panel.TCheckbutton", background=[("active", c["panel"])])
+        s.map("Panel.TCheckbutton",
+              background=[("active", c["panel"])],
+              indicatorcolor=[("selected", c["accent"]), ("!selected", c["panel2"])])
 
-        s.configure("TButton", font=self.fonts["base"], padding=6)
-        s.configure("Accent.TButton", font=self.fonts["base"], padding=8)
+        # buttons: ghost default + accent primary
+        s.configure("TButton", font=self.fonts["bold"], padding=(12, 9),
+                    background=c["panel2"], foreground=c["text"],
+                    borderwidth=0, relief="flat", focuscolor=c["panel2"])
+        s.map("TButton",
+              background=[("pressed", c["accent"]), ("active", c["border"])],
+              foreground=[("active", c["text"])])
+        s.configure("Accent.TButton", font=self.fonts["bold"], padding=(12, 9),
+                    background=c["accent"], foreground="#08122b",
+                    borderwidth=0, relief="flat", focuscolor=c["accent"])
+        s.map("Accent.TButton",
+              background=[("pressed", c["accent"]), ("active", c["accent_hover"])],
+              foreground=[("active", "#08122b")])
 
+        # navigation tree
         s.configure("Nav.Treeview", background=c["sidebar"], fieldbackground=c["sidebar"],
-                    foreground=c["text"], borderwidth=0, rowheight=30, font=self.fonts["base"])
-        s.map("Nav.Treeview", background=[("selected", c["accent"])],
-              foreground=[("selected", "#ffffff")])
-        s.configure("Nav.Treeview.Heading", background=c["sidebar"], foreground=c["muted"])
+                    foreground=c["text"], borderwidth=0, rowheight=32, font=self.fonts["base"])
+        s.map("Nav.Treeview",
+              background=[("selected", c["accent"])],
+              foreground=[("selected", "#08122b")])
+        s.configure("Nav.Treeview.Item", padding=2)
         s.layout("Nav.Treeview", [("Nav.Treeview.treearea", {"sticky": "nswe"})])  # hide header
 
-        s.configure("TScale", background=c["panel"])
-        s.configure("TCombobox", fieldbackground="#0b1220", background=c["panel"], foreground=c["text"])
+        # sliders
+        s.configure("Horizontal.TScale", background=c["panel"], troughcolor=c["panel2"],
+                    borderwidth=0, lightcolor=c["accent"], darkcolor=c["accent"])
+        s.map("Horizontal.TScale", background=[("active", c["panel"])])
+
+        # combobox
+        s.configure("TCombobox", fieldbackground=c["panel2"], background=c["panel2"],
+                    foreground=c["text"], arrowcolor=c["accent2"], borderwidth=0,
+                    padding=6, selectbackground=c["panel2"], selectforeground=c["text"])
+        s.map("TCombobox", fieldbackground=[("readonly", c["panel2"])],
+              foreground=[("readonly", c["text"])])
+
+        # scrollbar (navigation)
+        s.configure("Nav.Vertical.TScrollbar", background=c["panel2"], troughcolor=c["sidebar"],
+                    bordercolor=c["sidebar"], arrowcolor=c["muted"], borderwidth=0, relief="flat")
+        s.map("Nav.Vertical.TScrollbar", background=[("active", c["accent"])])
+
+        # spinbox / separators
+        s.configure("TSpinbox", fieldbackground=c["panel2"], background=c["panel2"],
+                    foreground=c["text"], arrowcolor=c["accent2"], borderwidth=0, padding=4)
         s.configure("TSeparator", background=c["border"])
+        try:
+            self.root.option_add("*TCombobox*Listbox.background", c["panel2"])
+            self.root.option_add("*TCombobox*Listbox.foreground", c["text"])
+            self.root.option_add("*TCombobox*Listbox.selectBackground", c["accent"])
+            self.root.option_add("*TCombobox*Listbox.selectForeground", "#08122b")
+        except tk.TclError:
+            pass
 
     # UI -------------------------------------------------------------------
     def _build_ui(self):
@@ -198,36 +260,58 @@ class LectureApp:
         self.root.rowconfigure(0, weight=1)
 
         # sidebar
-        sidebar = ttk.Frame(self.root, style="Sidebar.TFrame", width=290)
+        sidebar = ttk.Frame(self.root, style="Sidebar.TFrame", width=292)
         sidebar.grid(row=0, column=0, sticky="ns")
         sidebar.grid_propagate(False)
         self.sidebar = sidebar
 
+        # brand header: atom glyph + title + subtitle
         head = ttk.Frame(sidebar, style="Sidebar.TFrame")
-        head.pack(fill="x", padx=18, pady=(18, 8))
-        self.lbl_app_title = ttk.Label(head, text=self.i18n.t("app.title"), style="SidebarTitle.TLabel")
+        head.pack(fill="x", padx=20, pady=(22, 10))
+        logo = ttk.Label(head, text="⚛", style="SidebarTitle.TLabel", foreground=self.colors["accent2"])
+        logo.pack(side="left", padx=(0, 10))
+        titlecol = ttk.Frame(head, style="Sidebar.TFrame")
+        titlecol.pack(side="left", fill="x")
+        self.lbl_app_title = ttk.Label(titlecol, text=self.i18n.t("app.title"), style="SidebarTitle.TLabel")
         self.lbl_app_title.pack(anchor="w")
-        self.lbl_app_sub = ttk.Label(head, text=self.i18n.t("app.subtitle"), style="Sidebar.TLabel")
+        self.lbl_app_sub = ttk.Label(titlecol, text=self.i18n.t("app.subtitle"), style="Sidebar.TLabel")
         self.lbl_app_sub.pack(anchor="w")
 
-        self.lbl_contents = ttk.Label(sidebar, text=self.i18n.t("nav.contents"), style="Sidebar.TLabel")
-        self.lbl_contents.pack(anchor="w", padx=18, pady=(10, 2))
+        ttk.Separator(sidebar).pack(fill="x", padx=20, pady=(4, 8))
+        self.lbl_contents = ttk.Label(sidebar, text=self.i18n.t("nav.contents"), style="SectionHead.TLabel")
+        self.lbl_contents.pack(anchor="w", padx=22, pady=(2, 4))
 
-        self.tree = ttk.Treeview(sidebar, style="Nav.Treeview", show="tree", selectmode="browse")
-        self.tree.pack(fill="both", expand=True, padx=10)
+        treewrap = ttk.Frame(sidebar, style="Sidebar.TFrame")
+        treewrap.pack(fill="both", expand=True, padx=(12, 6))
+        self.tree = ttk.Treeview(treewrap, style="Nav.Treeview", show="tree", selectmode="browse")
+        vsb = ttk.Scrollbar(treewrap, orient="vertical", command=self.tree.yview,
+                            style="Nav.Vertical.TScrollbar")
+        self.tree.configure(yscrollcommand=vsb.set)
+        self.tree.pack(side="left", fill="both", expand=True)
+        vsb.pack(side="right", fill="y")
         self.tree.bind("<<TreeviewSelect>>", self._on_tree_select)
+        # mouse-wheel scrolling over the navigation
+        self.tree.bind("<MouseWheel>", self._on_tree_wheel)
+        self.tree.bind("<Button-4>", lambda e: self.tree.yview_scroll(-1, "units"))
+        self.tree.bind("<Button-5>", lambda e: self.tree.yview_scroll(1, "units"))
         self._populate_tree()
 
+        ttk.Separator(sidebar).pack(fill="x", padx=20, pady=(6, 0))
         footer = ttk.Frame(sidebar, style="Sidebar.TFrame")
-        footer.pack(fill="x", padx=14, pady=14)
-        self.btn_settings = ttk.Button(footer, text=self.i18n.t("nav.settings"), command=self._open_settings)
+        footer.pack(fill="x", padx=16, pady=16)
+        self.btn_settings = ttk.Button(footer, text="⚙  " + self.i18n.t("nav.settings"),
+                                       style="Accent.TButton", command=self._open_settings)
         self.btn_settings.pack(fill="x")
         self.btn_about = ttk.Button(footer, text=self.i18n.t("nav.about"), command=self._show_about)
-        self.btn_about.pack(fill="x", pady=(6, 0))
+        self.btn_about.pack(fill="x", pady=(8, 0))
+
+        # thin divider between sidebar and content
+        divider = tk.Frame(self.root, width=1, background=self.colors["border"])
+        divider.grid(row=0, column=1, sticky="nsw")
 
         # content area
         self.content = ttk.Frame(self.root, style="Content.TFrame")
-        self.content.grid(row=0, column=1, sticky="nsew")
+        self.content.grid(row=0, column=1, sticky="nsew", padx=(1, 0))
         self.content.columnconfigure(0, weight=1)
         self.content.rowconfigure(0, weight=1)
 
@@ -243,6 +327,9 @@ class LectureApp:
                     self.topic_lookup[node] = topic
 
     # navigation -----------------------------------------------------------
+    def _on_tree_wheel(self, event):
+        self.tree.yview_scroll(-1 if event.delta > 0 else 1, "units")
+
     def _on_tree_select(self, _evt):
         sel = self.tree.selection()
         if not sel:
@@ -267,13 +354,42 @@ class LectureApp:
 
     def _show_welcome(self):
         self._clear_content()
+        c = self.colors
         frame = ttk.Frame(self.content, style="Content.TFrame")
         frame.grid(row=0, column=0, sticky="nsew")
         inner = ttk.Frame(frame, style="Content.TFrame")
-        inner.place(relx=0.5, rely=0.42, anchor="center")
-        ttk.Label(inner, text=self.i18n.t("welcome.title"), style="Title.TLabel").pack(anchor="center")
+        inner.place(relx=0.5, rely=0.5, anchor="center")
+
+        ttk.Label(inner, text="⚛  " + self.i18n.t("app.subtitle").upper(),
+                  style="TLabel", foreground=c["accent2"], font=self.fonts["chip"]).pack(anchor="center")
+        ttk.Label(inner, text=self.i18n.t("welcome.title"), style="Title.TLabel").pack(anchor="center", pady=(8, 0))
         ttk.Label(inner, text=self.i18n.t("welcome.body"), style="Muted.TLabel",
-                  wraplength=620, justify="center").pack(anchor="center", pady=(14, 0))
+                  wraplength=680, justify="center").pack(anchor="center", pady=(14, 22))
+
+        # chapter cards
+        cards = ttk.Frame(inner, style="Content.TFrame")
+        cards.pack(anchor="center")
+        for idx, ch in enumerate(CURRICULUM):
+            card = tk.Frame(cards, background=c["panel"], highlightthickness=1,
+                            highlightbackground=c["border"])
+            card.grid(row=0, column=idx, padx=8, sticky="n")
+            pad = ttk.Frame(card, style="Panel.TFrame")
+            pad.pack(fill="both", padx=16, pady=14)
+            n_topics = sum(len(sec["topics"]) for sec in ch["sections"])
+            ttk.Label(pad, text=self.i18n.t(ch["title_key"]), style="PanelTitle.TLabel",
+                      foreground=c["text"], font=self.fonts["bold"]).pack(anchor="w")
+            ttk.Label(pad, text=self.i18n.t("welcome.topics", n=n_topics),
+                      style="Panel.TLabel", foreground=c["accent2"],
+                      font=self.fonts["small"]).pack(anchor="w", pady=(1, 8))
+            for sec in ch["sections"]:
+                row = ttk.Frame(pad, style="Panel.TFrame")
+                row.pack(fill="x", pady=1)
+                ttk.Label(row, text="›", style="Panel.TLabel", foreground=c["accent"]).pack(side="left", padx=(0, 6))
+                ttk.Label(row, text=self.i18n.t(sec["title_key"]), style="Panel.TLabel",
+                          foreground=c["muted"], font=self.fonts["small"]).pack(side="left")
+
+        ttk.Label(inner, text=self.i18n.t("welcome.hint"), style="Muted.TLabel",
+                  font=self.fonts["small"]).pack(anchor="center", pady=(22, 0))
         self.current_view = frame
 
     # settings -------------------------------------------------------------
@@ -286,10 +402,15 @@ class LectureApp:
         dlg.grab_set()
 
         wrap = ttk.Frame(dlg, style="Panel.TFrame")
-        wrap.pack(fill="both", expand=True, padx=20, pady=20)
+        wrap.pack(fill="both", expand=True, padx=26, pady=24)
 
-        ttk.Label(wrap, text=self.i18n.t("settings.title"), style="PanelTitle.TLabel").grid(
-            row=0, column=0, columnspan=2, sticky="w", pady=(0, 12))
+        titlerow = ttk.Frame(wrap, style="Panel.TFrame")
+        titlerow.grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 16))
+        tk.Frame(titlerow, width=3, height=16, background=self.colors["accent2"]).pack(
+            side="left", fill="y", padx=(0, 8))
+        ttk.Label(titlerow, text="⚙  " + self.i18n.t("settings.title"),
+                  style="PanelTitle.TLabel", foreground=self.colors["text"],
+                  font=self.fonts["heading"]).pack(side="left")
 
         # language
         ttk.Label(wrap, text=self.i18n.t("settings.language"), style="Panel.TLabel").grid(
@@ -334,8 +455,9 @@ class LectureApp:
             self._apply_settings()
             dlg.destroy()
 
-        ttk.Button(btns, text=self.i18n.t("settings.cancel"), command=dlg.destroy).pack(side="right", padx=(6, 0))
-        ttk.Button(btns, text=self.i18n.t("settings.apply"), command=apply_and_close).pack(side="right")
+        ttk.Button(btns, text=self.i18n.t("settings.cancel"), command=dlg.destroy).pack(side="right", padx=(8, 0))
+        ttk.Button(btns, text=self.i18n.t("settings.apply"), style="Accent.TButton",
+                   command=apply_and_close).pack(side="right")
         wrap.columnconfigure(1, weight=1)
 
     def _apply_settings(self):
@@ -347,7 +469,7 @@ class LectureApp:
         self.lbl_app_title.configure(text=self.i18n.t("app.title"))
         self.lbl_app_sub.configure(text=self.i18n.t("app.subtitle"))
         self.lbl_contents.configure(text=self.i18n.t("nav.contents"))
-        self.btn_settings.configure(text=self.i18n.t("nav.settings"))
+        self.btn_settings.configure(text="⚙  " + self.i18n.t("nav.settings"))
         self.btn_about.configure(text=self.i18n.t("nav.about"))
         self._populate_tree()
         # rebuild current view so its labels pick up the new language

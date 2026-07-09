@@ -183,7 +183,7 @@ class ApplicationsSim(Simulation):
         self.r_power.set(f"{i_ua * 0.5:.1f} µW")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         if self.device == "pmt":
             self._draw_pmt()
         else:
@@ -191,7 +191,6 @@ class ApplicationsSim(Simulation):
 
     def _draw_pmt(self):
         c = self.canvas
-        c.delete("all")
         w, h = self.cwh()
         col = self.colors
         c.create_rectangle(w * 0.05, h * 0.10, w * 0.95, h * 0.66, outline="#334155")
@@ -219,7 +218,6 @@ class ApplicationsSim(Simulation):
 
     def _draw_solar(self):
         c = self.canvas
-        c.delete("all")
         w, h = self.cwh()
         col = self.colors
         jx = w * 0.5

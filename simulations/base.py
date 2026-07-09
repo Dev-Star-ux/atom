@@ -50,32 +50,37 @@ class Simulation(ttk.Frame):
         self.rowconfigure(1, weight=1)
 
         header = ttk.Frame(self, style="Content.TFrame")
-        header.grid(row=0, column=0, sticky="ew", padx=18, pady=(14, 6))
-        ttk.Label(header, text=self.t(self.title_key), style="Heading.TLabel").pack(anchor="w")
-        ttk.Label(
-            header,
-            text=self.t(self.desc_key),
-            style="Muted.TLabel",
-            wraplength=900,
-            justify="left",
-        ).pack(anchor="w", pady=(4, 0))
+        header.grid(row=0, column=0, sticky="ew", padx=22, pady=(18, 8))
+        titlerow = ttk.Frame(header, style="Content.TFrame")
+        titlerow.pack(fill="x")
+        # accent bar to the left of the title
+        tk.Frame(titlerow, width=4, background=self.colors["accent"]).pack(
+            side="left", fill="y", padx=(0, 12))
+        tcol = ttk.Frame(titlerow, style="Content.TFrame")
+        tcol.pack(side="left", fill="x", expand=True)
+        ttk.Label(tcol, text=self.t(self.title_key), style="Heading.TLabel").pack(anchor="w")
+        ttk.Label(tcol, text=self.t(self.desc_key), style="Muted.TLabel",
+                  wraplength=880, justify="left").pack(anchor="w", pady=(4, 0))
 
         body = ttk.Frame(self, style="Content.TFrame")
-        body.grid(row=1, column=0, sticky="nsew", padx=18, pady=(4, 14))
+        body.grid(row=1, column=0, sticky="nsew", padx=22, pady=(6, 18))
         body.columnconfigure(0, weight=1)
         body.rowconfigure(0, weight=1)
 
+        # canvas wrapped in a bordered frame for a framed-panel look
+        canvas_wrap = tk.Frame(body, background=self.colors["border"])
+        canvas_wrap.grid(row=0, column=0, sticky="nsew")
         self.canvas = tk.Canvas(
-            body,
+            canvas_wrap,
             background=self.colors["canvas"],
             highlightthickness=0,
             width=760,
             height=460,
         )
-        self.canvas.grid(row=0, column=0, sticky="nsew")
+        self.canvas.pack(fill="both", expand=True, padx=1, pady=1)
 
-        side = ttk.Frame(body, style="Panel.TFrame", width=300)
-        side.grid(row=0, column=1, sticky="ns", padx=(14, 0))
+        side = ttk.Frame(body, style="Panel.TFrame", width=304)
+        side.grid(row=0, column=1, sticky="ns", padx=(16, 0))
         side.grid_propagate(False)
         self.controls = side
 
@@ -84,17 +89,22 @@ class Simulation(ttk.Frame):
 
     def _build_control_container(self):
         inner = ttk.Frame(self.controls, style="Panel.TFrame")
-        inner.pack(fill="both", expand=True, padx=14, pady=14)
-        ttk.Label(inner, text=self.t("common.controls"), style="PanelTitle.TLabel").pack(anchor="w")
-        ttk.Separator(inner).pack(fill="x", pady=(6, 10))
+        inner.pack(fill="both", expand=True, padx=16, pady=16)
+        titlerow = ttk.Frame(inner, style="Panel.TFrame")
+        titlerow.pack(fill="x")
+        tk.Frame(titlerow, width=3, height=14, background=self.colors["accent2"]).pack(
+            side="left", fill="y", padx=(0, 8))
+        ttk.Label(titlerow, text=self.t("common.controls").upper(),
+                  style="PanelTitle.TLabel").pack(side="left")
+        ttk.Separator(inner).pack(fill="x", pady=(8, 10))
         self.build_controls(inner)
 
-        ttk.Separator(inner).pack(fill="x", pady=10)
+        ttk.Separator(inner).pack(fill="x", pady=12)
         btns = ttk.Frame(inner, style="Panel.TFrame")
         btns.pack(fill="x")
-        self._pause_btn = ttk.Button(btns, text=self.t("common.pause"), command=self.toggle_pause)
+        self._pause_btn = ttk.Button(btns, text="⏸  " + self.t("common.pause"), command=self.toggle_pause)
         self._pause_btn.pack(side="left", expand=True, fill="x", padx=(0, 4))
-        ttk.Button(btns, text=self.t("common.reset"), command=self.reset).pack(
+        ttk.Button(btns, text="↺  " + self.t("common.reset"), command=self.reset).pack(
             side="left", expand=True, fill="x", padx=(4, 0)
         )
 
@@ -134,7 +144,8 @@ class Simulation(ttk.Frame):
     def toggle_pause(self):
         self.paused = not self.paused
         self._pause_btn.configure(
-            text=self.t("common.play") if self.paused else self.t("common.pause")
+            text=("▶  " + self.t("common.play")) if self.paused
+            else ("⏸  " + self.t("common.pause"))
         )
 
     # helpers for subclasses ----------------------------------------------
@@ -174,6 +185,32 @@ class Simulation(ttk.Frame):
         ttk.Label(row, textvariable=var, style="Readout.TLabel").pack(side="right")
         return var
 
+    # background -----------------------------------------------------------
+    def paint_bg(self):
+        """Paint a subtle vertical gradient across the canvas (drawn as a few
+        wide bands so it stays cheap to redraw every frame)."""
+        c = self.canvas
+        w, h = self.cwh()
+        top = self.colors["canvas_top"]
+        bot = self.colors["canvas"]
+        bands = 40
+        for i in range(bands):
+            t = i / (bands - 1)
+            color = _blend(top, bot, t)
+            y0 = h * i / bands
+            y1 = h * (i + 1) / bands + 1
+            c.create_rectangle(0, y0, w, y1, fill=color, outline="")
+
+    def draw(self):
+        """Template: clear, paint the gradient, then let the subclass render.
+        Subclasses implement render(), not draw()."""
+        try:
+            self.canvas.delete("all")
+        except tk.TclError:
+            return
+        self.paint_bg()
+        self.render()
+
     # subclass hooks -------------------------------------------------------
     def build_controls(self, parent):
         raise NotImplementedError
@@ -184,5 +221,15 @@ class Simulation(ttk.Frame):
     def tick(self, dt):
         pass
 
-    def draw(self):
+    def render(self):
         pass
+
+
+def _blend(a, b, t):
+    """Blend two hex colours; t=0 -> a, t=1 -> b."""
+    ar, ag, ab = int(a[1:3], 16), int(a[3:5], 16), int(a[5:7], 16)
+    br, bg, bb = int(b[1:3], 16), int(b[3:5], 16), int(b[5:7], 16)
+    r = int(ar + (br - ar) * t)
+    g = int(ag + (bg - ag) * t)
+    bl = int(ab + (bb - ab) * t)
+    return f"#{r:02x}{g:02x}{bl:02x}"

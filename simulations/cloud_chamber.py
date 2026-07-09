@@ -168,9 +168,8 @@ class CloudChamberSim(Simulation):
         self.r_back.set(f"{self.n_back}  ({100.0 * self.n_back / tot:.1f}%)")
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, sb, fx = self._geom()
         col = self.colors
 

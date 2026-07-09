@@ -127,9 +127,8 @@ class MassSpecSim(Simulation):
         self.ions = alive
 
     # drawing --------------------------------------------------------------
-    def draw(self):
+    def render(self):
         c = self.canvas
-        c.delete("all")
         w, h, (sx, sy) = self._geom()
         col = self.colors
 
