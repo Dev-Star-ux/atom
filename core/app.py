@@ -29,6 +29,10 @@ from simulations.hydrogen_spectrum import HydrogenSpectrumSim
 from simulations.planetary_disadvantages import PlanetaryDisadvantagesSim
 from simulations.bohr_model import BohrModelSim
 from simulations.bohr_hydrogen import BohrHydrogenSim
+from simulations.xray_discovery import XrayDiscoverySim
+from simulations.xray_wave import XrayWaveSim
+from simulations.xray_particle import XrayParticleSim
+from simulations.compton import ComptonSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -99,6 +103,16 @@ CURRICULUM = [
                     {"id": "planetary_flaws", "title_key": "topic.planetary_flaws.title", "sim": PlanetaryDisadvantagesSim},
                     {"id": "bohr_model", "title_key": "topic.bohr_model.title", "sim": BohrModelSim},
                     {"id": "bohr_hydrogen", "title_key": "topic.bohr_hydrogen.title", "sim": BohrHydrogenSim},
+                ],
+            },
+            {
+                "id": "ch2_sec5",
+                "title_key": "curriculum.ch2.sec5.title",
+                "topics": [
+                    {"id": "xray_discovery", "title_key": "topic.xray_discovery.title", "sim": XrayDiscoverySim},
+                    {"id": "xray_wave", "title_key": "topic.xray_wave.title", "sim": XrayWaveSim},
+                    {"id": "xray_particle", "title_key": "topic.xray_particle.title", "sim": XrayParticleSim},
+                    {"id": "compton", "title_key": "topic.compton.title", "sim": ComptonSim},
                 ],
             },
         ],

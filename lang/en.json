@@ -50,8 +50,15 @@
       "sec1": { "title": "Sec.1  Blackbody Radiation" },
       "sec2": { "title": "Sec.2  The Photoelectric Effect" },
       "sec3": { "title": "Sec.3  Atomic Spectrum" },
-      "sec4": { "title": "Sec.4  Bohr's Atomic Model" }
+      "sec4": { "title": "Sec.4  Bohr's Atomic Model" },
+      "sec5": { "title": "Sec.5  X-Rays" }
     }
+  },
+
+  "shell": {
+    "k_shell": "K-shell (≈ 1 keV)",
+    "l_shell": "L-shell (≈ 0.15 keV)",
+    "outer": "Outer electron (≈ 0.01 keV)"
   },
 
   "problem": {
@@ -442,6 +449,77 @@
       "xlabel": "Wavelength λ (nm)",
       "ylabel": "Line",
       "formula": "1/λ = R_H (1/n₁² − 1/n₂²)   ·   each line = one orbit-to-orbit transition"
+    },
+
+    "xray_discovery": {
+      "title": "Discovery of X-Rays",
+      "desc": "In 1895 Wilhelm Röntgen noticed that a cathode-ray tube made a nearby fluorescent screen glow, even through black paper. The invisible rays passed through flesh but were blocked by bone. Electrons accelerated by a high voltage strike a metal target and produce X-rays by bremsstrahlung and inner-shell transitions.",
+      "voltage": "Tube voltage",
+      "intensity": "Beam intensity",
+      "lambda_min": "Cutoff wavelength λ_min",
+      "max_energy": "Max photon energy",
+      "penetration": "Penetration",
+      "pen_high": "High (hard X-rays)",
+      "pen_med": "Medium (diagnostic)",
+      "cathode": "cathode",
+      "anode": "target",
+      "tube": "X-ray tube  ({v} kV)",
+      "screen": "fluorescent screen",
+      "hand": "hand (bones absorb X-rays)",
+      "note": "λ_min = hc / (eV)  —  higher voltage → shorter wavelength → more penetrating"
+    },
+
+    "xray_wave": {
+      "title": "Wave Property of X-Rays",
+      "desc": "X-rays exhibit wave behaviour: they interfere and diffract. Bragg's law  nλ = 2d sin θ  predicts bright reflection from crystal planes when the path difference equals an integer number of wavelengths — the foundation of X-ray crystallography.",
+      "wavelength": "X-ray wavelength λ",
+      "spacing": "Plane spacing d",
+      "angle": "Glancing angle θ",
+      "order": "Bragg order n",
+      "path_diff": "Path difference",
+      "result": "Interference",
+      "constructive": "Constructive (bright)",
+      "destructive": "Destructive (dark)",
+      "crystal": "crystal planes",
+      "bragg": "Bragg's law",
+      "bragg_val": "n = {n}\nλ = {lam} pm\nd = {d} pm\nθ = {theta}°\n2d sin θ = {n}λ"
+    },
+
+    "xray_particle": {
+      "title": "Particle Property of X-Rays",
+      "desc": "X-rays also behave as photons of energy E = hν = hc/λ. A single keV photon can eject a photoelectron from an atom if its energy exceeds the binding energy of that shell — the photoelectric effect extended to hard X-rays.",
+      "energy": "Photon energy",
+      "intensity": "Beam intensity",
+      "shell": "Electron shell",
+      "wavelength": "Wavelength λ",
+      "binding": "Binding energy W",
+      "photoelectron": "Photoelectron KE",
+      "ionised": "Electrons ejected",
+      "atom": "target atom",
+      "balance": "Energy conservation:",
+      "equation": "E_photon ({E} keV) = W ({W} keV) + KE ({ke} keV)",
+      "no_eject": "0 (E < W)",
+      "below": "E < W : no photoelectron",
+      "note": "One photon → one electron (quantum picture)"
+    },
+
+    "compton": {
+      "title": "Compton Effect",
+      "desc": "Arthur Compton (1923) showed that X-rays scattered by electrons emerge with a longer wavelength. The shift Δλ = (h/mc)(1 − cos θ) depends only on the scattering angle θ, proving that photons carry momentum as well as energy.",
+      "wavelength": "Incident wavelength λ",
+      "angle": "Scattering angle θ",
+      "shift": "Wavelength shift Δλ",
+      "scattered": "Scattered wavelength λ'",
+      "electron_ke": "Recoil electron energy",
+      "lambda_c": "Compton wavelength λ_C",
+      "incident": "λ = {lam} pm",
+      "out": "λ' = {lam} pm",
+      "recoil": "recoil e⁻",
+      "formula": "Compton formula",
+      "formula_val": "Δλ = λ_C (1 − cos θ)\n     = {shift} pm  at θ = {theta}°",
+      "theta_axis": "Scattering angle θ (°)",
+      "shift_axis": "Δλ (pm)",
+      "note": "Δλ is independent of λ — key evidence for photon momentum"
     }
   }
 }
