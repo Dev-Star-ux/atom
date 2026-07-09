@@ -11,6 +11,9 @@ from core.i18n import I18n
 from simulations.cathode_ray import CathodeRaySim
 from simulations.millikan import MillikanSim
 from simulations.mass_spec import MassSpecSim
+from simulations.cross_section import CrossSectionSim
+from simulations.planetary import PlanetarySim
+from simulations.rutherford import RutherfordSim
 
 # --- curriculum registry -------------------------------------------------
 # To add content later, append sections/topics here and add matching strings
@@ -27,6 +30,15 @@ CURRICULUM = [
                     {"id": "cathode_ray", "title_key": "topic.cathode_ray.title", "sim": CathodeRaySim},
                     {"id": "millikan", "title_key": "topic.millikan.title", "sim": MillikanSim},
                     {"id": "mass_spec", "title_key": "topic.mass_spec.title", "sim": MassSpecSim},
+                ],
+            },
+            {
+                "id": "ch1_sec2",
+                "title_key": "curriculum.ch1.sec2.title",
+                "topics": [
+                    {"id": "cross_section", "title_key": "topic.cross_section.title", "sim": CrossSectionSim},
+                    {"id": "planetary", "title_key": "topic.planetary.title", "sim": PlanetarySim},
+                    {"id": "rutherford", "title_key": "topic.rutherford.title", "sim": RutherfordSim},
                 ],
             },
         ],

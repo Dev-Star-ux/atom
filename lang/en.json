@@ -40,7 +40,8 @@
   "curriculum": {
     "ch1": {
       "title": "Ch.1  Structure of the Atom",
-      "sec1": { "title": "Sec.1  The Element of the Atom — Electron" }
+      "sec1": { "title": "Sec.1  The Element of the Atom — Electron" },
+      "sec2": { "title": "Sec.2  Rutherford's Atomic Model" }
     }
   },
 
@@ -95,6 +96,49 @@
       "detected": "Detected counts",
       "source": "Ion source",
       "detector": "Detector"
+    },
+
+    "cross_section": {
+      "title": "Effective Cross-section & Mean Free Path",
+      "desc": "A beam is fired into a slab of target atoms. Each particle travels straight until it strikes a target's effective cross-section. Averaged over many particles, the distance before a collision is the mean free path λ = 1 / (n σ). Compare the theoretical λ with the measured value, and watch the beam attenuate.",
+      "density": "Target density",
+      "radius": "Target radius (σ)",
+      "sigma": "Cross-section σ",
+      "ndensity": "Number density n",
+      "lambda_theory": "Mean free path λ (theory)",
+      "lambda_measured": "λ (measured)",
+      "transmission": "Transmitted",
+      "slab": "Target slab",
+      "beam": "Beam"
+    },
+
+    "planetary": {
+      "title": "The Nuclear (Planetary) Model of the Atom",
+      "desc": "Rutherford's model: nearly all the mass and all the positive charge sit in a tiny central nucleus, with electrons orbiting far outside — like planets around the sun. Turn on classical radiation to see why this model is unstable: an orbiting electron would radiate energy and spiral inward, a problem later solved by Bohr.",
+      "electrons": "Electrons",
+      "radius": "Orbit radius",
+      "speed": "Orbital speed",
+      "radiate": "Classical radiation (spiral in)",
+      "status": "State",
+      "stable": "Orbiting",
+      "collapsing": "Spiralling in…",
+      "collapsed": "Collapsed into nucleus",
+      "nucleus": "Nucleus (+Ze)",
+      "scale_note": "Not to scale: a real nucleus is ~10⁴–10⁵ times smaller than the atom."
+    },
+
+    "rutherford": {
+      "title": "The Rutherford Scattering Formula",
+      "desc": "Alpha particles are repelled by a heavy nucleus along hyperbolic paths. A small impact parameter gives a large deflection, so a few alphas bounce almost straight back — the clue to the tiny dense nucleus. The angular histogram builds up the Rutherford distribution, proportional to 1 / sin⁴(θ/2).",
+      "energy": "Alpha energy",
+      "zcharge": "Nuclear charge Z",
+      "spread": "Beam width (max b)",
+      "fired": "Alphas fired",
+      "backscatter": "Back-scattered (θ>90°)",
+      "back_pct": "Back-scatter fraction",
+      "beam": "α beam",
+      "nucleus": "Nucleus",
+      "hist_title": "Scattering-angle distribution"
     }
   }
 }
